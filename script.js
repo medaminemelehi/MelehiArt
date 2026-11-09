@@ -74,24 +74,45 @@ function closeMenu() {
   document.querySelector('.hamburger').classList.remove('open');
 }
 
-function handleSubmit() {
-  document.getElementById('form-success').style.display = 'block';
+/* ---------------- Contact form (Formspree) ---------------- */
+// Paste your Formspree form URL here (e.g. https://formspree.io/f/abcd1234). Safe to be public.
+const FORMSPREE_URL = 'https://formspree.io/f/mjyyqnjy';
+
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const status = document.getElementById('form-status');
+  const btn = document.getElementById('cf-submit');
+  const say = (msg, kind) => { status.textContent = msg; status.className = 'form-status ' + (kind || ''); };
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form._gotcha.value) return;                       // honeypot tripped: silently drop
+    const f = form.elements;
+    if (!f.first_name.value.trim() || !f.message.value.trim()) return say('Please fill in your name and message.', 'error');
+    if (!/^\S+@\S+\.\S+$/.test(f.email.value.trim())) return say('Please enter a valid email address.', 'error');
+    if (Date.now() - (+localStorage.getItem('lastSend') || 0) < 60000) return say('Please wait a minute before sending another message.', 'error');
+    if (FORMSPREE_URL.includes('YOUR_FORM_ID')) return say('The form is not configured yet.', 'error');
+
+    btn.disabled = true; btn.textContent = 'Sending…'; say('');
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      localStorage.setItem('lastSend', Date.now());
+      form.reset();
+      say('Thank you — your message has been sent.', 'ok');
+    } catch (err) {
+      console.error(err);
+      say('Sorry, something went wrong. Please try again or email directly.', 'error');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send Message';
+    }
+  });
 }
-
-// Any element with data-page="x" navigates to page x
-document.addEventListener('click', e => {
-  const link = e.target.closest('[data-page]');
-  if (!link) return;
-  e.preventDefault();
-  showPage(link.dataset.page);
-  closeMenu();
-});
-
-window.addEventListener('popstate', () => showPage(location.hash.slice(1), { push: false }));
-
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
-});
 
 /* ---------------- Reveal-on-scroll ---------------- */
 const revealObserver = 'IntersectionObserver' in window
@@ -238,5 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cc) cc.textContent = `${data.ceramics.length} pieces`;
 
   lightbox.init();
+  initContactForm();
   showPage(location.hash.slice(1) || 'home', { push: false });
 });

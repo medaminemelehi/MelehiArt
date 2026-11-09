@@ -802,6 +802,12 @@
   }
   .submit-btn:hover { background: var(--deep); transform: translateY(-2px); }
 
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .form-status { margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; min-height: 1.5em; }
+  .form-status.ok { color: var(--teal); }
+  .form-status.error { color: var(--terracotta); }
+  .submit-btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
   /* FOOTER */
   footer {
     background: var(--deep);

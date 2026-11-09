@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melehi Art — Mohamed Amine Melehi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#home" data-page="home"><span>Melehi</span> Art</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" data-page="home">Home</a></li>
+    <li><a href="#paintings" data-page="paintings">Paintings</a></li>
+    <li><a href="#ceramics" data-page="ceramics">Ceramics</a></li>
+    <li><a href="#biography" data-page="biography">Biography</a></li>
+    <li><a href="#contact" data-page="contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" type="button" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ======================== HOME PAGE ======================== -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Asilah, Morocco · Est. 1953</div>
+      <h1 class="hero-title">Med<br><em>Amine</em><br>Melehi</h1>
+      <p class="hero-sub">Painter, ceramist, and keeper of stories — a lifetime of art rooted in Moroccan earth.</p>
+      <a class="hero-cta" href="#biography" data-page="biography">Discover the Artist</a>
+    </div>
+    <div class="hero-year">1953</div>
+    <div class="hero-scroll" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- Portfolio Overview -->
+  <section class="home-section">
+    <div class="section-label">Artistic Portfolio</div>
+    <h2 class="section-title">A World of<br>Form & Color</h2>
+    <p class="section-body">Explore the captivating collection of Mohamed Amine Melehi — paintings that navigate between structure and spontaneity, and ceramics that embody a unique blend of tradition and innovation.</p>
+
+    <div class="home-grid">
+      <div class="home-card reveal" data-page="paintings">
+        <img id="home-paintings-card" class="home-card-img" alt="Paintings Overview" loading="lazy">
+        <div class="home-card-label">
+          <h3>Paintings</h3>
+          <p>Acrylic on canvas · 2010–2016</p>
+        </div>
+      </div>
+      <div class="home-card reveal" data-page="ceramics">
+        <img id="home-ceramics-card" class="home-card-img" alt="Ceramics Overview" loading="lazy">
+        <div class="home-card-label">
+          <h3>Ceramics</h3>
+          <p>Surrealistic forms · Geometric elegance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Biography Teaser -->
+  <section class="home-section">
+    <div class="section-label">The Artist</div>
+    <div class="bio-teaser reveal">
+      <div class="bio-portrait">
+        <img id="home-portrait" class="placeholder-img" alt="Mohamed Amine Melehi" loading="lazy" style="width:100%;display:block;aspect-ratio:3/4;object-fit:cover">
+      </div>
+      <div class="bio-text">
+        <div class="section-label">Biography</div>
+        <h2 class="section-title">Born in Asilah,<br>Shaped by Morocco</h2>
+        <div class="quote">"His work navigates between structure and spontaneity, creating a balance where imagination unfolds freely."</div>
+        <p class="section-body">Born in 1953 in the picturesque coastal town of Asilah, Mohamed Amine Melehi dedicated decades to the plastic arts — teaching, creating, and exhibiting across Morocco and around the globe. He studied at the prestigious School of Arts and Architecture of Marseille, and returned home to leave a lasting mark on Moroccan cultural life.</p>
+        <button class="explore-link" data-page="biography">Full Biography</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book -->
+  <section class="book-section reveal">
+    <div>
+      <div class="section-label" style="color:var(--ochre)">Published Work</div>
+      <h2 class="section-title">101 Moroccan<br>Folk Tales</h2>
+      <p class="section-body">Discover one hundred and one traditional Moroccan folk tales, lovingly collected and arranged in Asilah by Mohamed Amine Melehi. A treasure trove of coastal and Moroccan heritage, bridging generations through the art of storytelling.</p>
+      <a class="explore-link" href="#contact" data-page="contact">Ask About the Book</a>
+    </div>
+    <div class="book-cover">
+      <img id="home-book-poster" src="" alt="101 Contes Populaires du Maroc" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+  </section>
+</div>
+
+<!-- ======================== PAINTINGS PAGE ======================== -->
+<div id="page-paintings" class="page">
+  <div class="page-hero page-hero--paintings">
+    <div class="page-hero-label">Collection · <span id="paintings-count"></span></div>
+    <h1 class="page-hero-title">Paintings</h1>
+    <p class="page-hero-desc">Through essential forms and meaningful motifs, the canvas becomes a space of symbols and dialogue — structure meeting spontaneity.</p>
+  </div>
+
+  <div class="art-grid" id="paintings-grid">
+  </div>
+</div>
+
+<!-- ======================== CERAMICS PAGE ======================== -->
+<div id="page-ceramics" class="page">
+  <div class="page-hero page-hero--ceramics">
+    <div class="page-hero-label">Collection · <span id="ceramics-count"></span></div>
+    <h1 class="page-hero-title">Ceramics</h1>
+    <p class="page-hero-desc">From surrealistic forms to geometric elegance, each piece embodies a unique blend of Moroccan tradition and contemporary innovation.</p>
+  </div>
+
+  <div class="art-grid" id="ceramics-grid">
+  </div>
+</div>
+
+<!-- ======================== BIOGRAPHY PAGE ======================== -->
+<div id="page-biography" class="page bio-page">
+  <div class="bio-header">
+    <div class="bio-photo-wrap">
+      <img src="assets/biography/portrait_web.jpg" alt="Mohamed Amine Melehi">
+    </div>
+    <div class="bio-intro">
+      <div class="eyebrow">Artist · Ceramist · Educator</div>
+      <h1>Mohamed<br>Amine<br>Melehi</h1>
+      <p>Born in 1953 in the picturesque coastal town of Asilah, Morocco. With decades of artistic practice, teaching, and international exhibitions, his work has become an enduring part of Moroccan cultural heritage.</p>
+    </div>
+  </div>
+
+  <div class="bio-body">
+    <div class="bio-cols">
+      <div class="bio-block">
+        <h2>Professional Experience</h2>
+        <ul class="bio-list">
+          <li><span class="year">1981–2013</span><span>Professor of Plastic Arts, Assilah</span></li>
+          <li><span class="year">1981–1999</span><span>Head of the Ceramics and Sculpture Workshop, International Cultural Moussem of Assilah</span></li>
+          <li><span class="year">1979–1981</span><span>Professor of Applied Arts at Ibn Al Haitam High School, Fes</span></li>
+        </ul>
+      </div>
+      <div class="bio-block">
+        <h2>Education</h2>
+        <ul class="bio-list">
+          <li><span class="year">1973–1979</span><span>Higher National Diploma in Plastic Expression (DNSEP) — School of Arts and Architecture of Marseille, France</span></li>
+          <li><span class="year">1970–1973</span><span>Diploma in Applied Arts, Ceramics Section — Alkhansa High School, Casablanca</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exhibitions-section">
+      <h2>Art Exhibitions</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-venues">Palais des Arts de Tanger — In collaboration with <strong>"International Exhibition of Technology and Innovation"</strong>, Tangier</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-venues">Galerie Fondation Mohamed VI — <strong>"The Magic of Geometry"</strong>, Rabat</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-venues">Galerie IBDAE, <strong>Tangier</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2016</div>
+          <div class="timeline-venues">
+            Villa des Arts — <strong>"12 Zailachis Contemporary Modern Artists"</strong>, Casablanca<br>
+            Hassan II Mosque Foundation — <strong>"50 Years of Painting in Morocco"</strong>, Casablanca
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2014</div>
+          <div class="timeline-venues">Bab Rouah — <strong>"13 Zailachis Artists"</strong>, Rabat</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2004</div>
+          <div class="timeline-venues">Spanish Cultural Center, Cervantes Institute, <strong>Tangier</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2002</div>
+          <div class="timeline-venues">1st International Potter's Forum, <strong>Choueifat, Lebanon</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1999</div>
+          <div class="timeline-venues">Franco-Moroccan Alliance — <strong>Solo Exhibition</strong>, Rabat</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1998</div>
+          <div class="timeline-venues">Collective Exhibition, Galerie Gayant Expo — "Bleus d'ailleurs" Association. Founder: Hassan Zarrou, <strong>Douai, France</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1996, 1998, 2000, 2002</div>
+          <div class="timeline-venues">International Ceramics Biennial, <strong>Cairo, Egypt</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1996</div>
+          <div class="timeline-venues">Galerie Aplanos, <strong>Assilah</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1995, 1996</div>
+          <div class="timeline-venues"><strong>"Plastic Artists of Morocco"</strong>, Palais des Congrès, Marrakech</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1990</div>
+          <div class="timeline-venues">Galerie Flandria &amp; Galerie Mechoir Al Kasbah, <strong>Tangier</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1989</div>
+          <div class="timeline-venues">International Ceramics Forum, <strong>Karlovy Vary, Czechoslovakia</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1987</div>
+          <div class="timeline-venues">Cultural Ministry Delegation — Artists of the Tangier Province, <strong>Tangier</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1986</div>
+          <div class="timeline-venues">Spring Exhibition, <strong>Tétouan</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1984</div>
+          <div class="timeline-venues">Spanish Cultural Center — <strong>Solo Exhibition</strong>, Fes</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1981, 1983, 1988, 1989, 1991</div>
+          <div class="timeline-venues">Centre Hassan II des Rencontres Internationales — Cultural Moussems of <strong>Assilah</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1975, 1976, 1977, 1979</div>
+          <div class="timeline-venues">Association Imam Assili, <strong>Assilah</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1975</div>
+          <div class="timeline-venues">School of Fine Arts, <strong>Aix-en-Provence, France</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1973, 1974, 1975</div>
+          <div class="timeline-venues">Palais des Congrès, <strong>Aix-en-Provence, France</strong></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1972</div>
+          <div class="timeline-venues">
+            French Cultural Center, <strong>Kenitra</strong><br>
+            Maison des jeunes, <strong>Casablanca</strong><br>
+            American Cultural Center, <strong>Casablanca</strong>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1971</div>
+          <div class="timeline-venues">Lycée Al Khansa, <strong>Casablanca</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== CONTACT PAGE ======================== -->
+<div id="page-contact" class="page">
+  <div class="contact-page">
+    <div class="contact-left">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Let's<br>Connect</h2>
+      <p>Whether you're interested in acquiring a piece, organizing an exhibition, or simply wish to learn more about the work of Mohamed Amine Melehi, reach out.</p>
+      <ul class="contact-details">
+        <li>
+          <span class="icon">✉</span>
+          <a href="mailto:medamine.melehi@gmail.com">medamine.melehi@gmail.com</a>
+        </li>
+        <li>
+          <span class="icon">✆</span>
+          <a href="tel:+212708995675">+212 7 08 99 56 75</a>
+        </li>
+        <li>
+          <span class="icon">◎</span>
+          <span>Asilah, Morocco</span>
+        </li>
+      </ul>
+      <div class="social-row">
+        <a class="social-btn" href="#" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H8.1v3h2.5V21h2.9z"/></svg>
+        </a>
+        <a class="social-btn" href="#" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h2>Send a Message</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Your first name">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Your last name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" placeholder="Artwork inquiry, exhibition, etc.">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea rows="5" placeholder="Tell us more about your inquiry..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Send Message</button>
+      <div id="form-success" style="display:none;margin-top:1rem;color:var(--terracotta);font-size:.9rem;font-family:'Cormorant Garamond',serif;font-style:italic">
+        Thank you — your message has been sent.
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Melehi Art · Asilah, Morocco · <a href="mailto:medamine.melehi@gmail.com">medamine.melehi@gmail.com</a></p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer" aria-hidden="true">
+  <button class="lb-close" type="button" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" type="button" aria-label="Previous">&#8249;</button>
+  <div class="lb-stage">
+    <img id="lightbox-img" alt="">
+  </div>
+  <button class="lb-nav lb-next" type="button" aria-label="Next">&#8250;</button>
+  <div class="lb-footer">
+    <div id="lightbox-caption" class="lb-caption"></div>
+    <div id="lightbox-counter" class="lb-counter"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

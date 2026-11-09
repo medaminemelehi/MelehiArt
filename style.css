@@ -231,21 +231,30 @@ button { font: inherit; color: inherit; }
 .nav.is-clear .nav-links a::after { background: var(--brass-l); }
 
 .nav-end { justify-self: end; display: flex; align-items: center; gap: 1.75rem; position: relative; z-index: 2; }
-.lang-switch { display: flex; align-items: center; }
+.lang-switch { display: flex; align-items: center; gap: 0.9rem; }
 .lang-switch button {
-  font: inherit;
-  font-size: 0.66rem;
-  letter-spacing: 0.24em;
-  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  border: 0;
+  border-radius: 0;
   background: none;
-  border: none;
-  padding: 0.5rem 0.2rem 0.5rem 0.45rem;
+  color: inherit;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;           /* balances the trailing letter-spacing so the text sits centred */
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.55;
   transition: opacity 0.3s, color 0.3s;
 }
-.lang-switch button + button { border-left: 1px solid currentColor; border-left-color: color-mix(in srgb, currentColor 35%, transparent); padding-left: 0.65rem; margin-left: 0.45rem; }
-.lang-switch button:hover { opacity: 0.85; }
+.lang-sep { width: 1px; height: 0.75rem; background: currentColor; opacity: 0.3; }
+.lang-switch button:hover { opacity: 0.9; }
+.lang-switch button:focus { outline: none; }
+.lang-switch button:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
 .lang-switch button.active { opacity: 1; color: var(--brass); cursor: default; }
 .nav.is-clear .lang-switch button.active, .nav.menu-open .lang-switch button.active { color: var(--brass-l); }
 

@@ -127,12 +127,12 @@ function initContactForm() {
     e.preventDefault();
     if (form._gotcha.value) return;                       // honeypot tripped: silently drop
     const f = form.elements;
-    if (!f.first_name.value.trim() || !f.message.value.trim()) return say('Please fill in your name and message.', 'error');
-    if (!/^\S+@\S+\.\S+$/.test(f.email.value.trim())) return say('Please enter a valid email address.', 'error');
-    if (Date.now() - (+localStorage.getItem('lastSend') || 0) < 60000) return say('Please wait a minute before sending another message.', 'error');
-    if (FORMSPREE_URL.includes('YOUR_FORM_ID')) return say('The form is not configured yet.', 'error');
+    if (!f.first_name.value.trim() || !f.message.value.trim()) return say(t('formMissing'), 'error');
+    if (!/^\S+@\S+\.\S+$/.test(f.email.value.trim())) return say(t('formEmail'), 'error');
+    if (Date.now() - (+localStorage.getItem('lastSend') || 0) < 60000) return say(t('formWait'), 'error');
+    if (FORMSPREE_URL.includes('YOUR_FORM_ID')) return say(t('formNotSet'), 'error');
 
-    btn.disabled = true; btn.textContent = 'Sending…'; say('');
+    btn.disabled = true; btn.textContent = t('sending'); say('');
     try {
       const res = await fetch(FORMSPREE_URL, {
         method: 'POST',
@@ -142,12 +142,12 @@ function initContactForm() {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       localStorage.setItem('lastSend', Date.now());
       form.reset();
-      say('Thank you — your message has been sent.', 'ok');
+      say(t('sent'), 'ok');
     } catch (err) {
       console.error(err);
-      say('Sorry, something went wrong. Please try again or email directly.', 'error');
+      say(t('failed'), 'error');
     } finally {
-      btn.disabled = false; btn.textContent = 'Send Message';
+      btn.disabled = false; btn.innerHTML = `<span>${t('send')}</span>`;
     }
   });
 }
@@ -204,23 +204,23 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
 
 // Caption lines for an artwork: paintings show technic + year, ceramics show year; both show dimensions
 function captionLines(item) {
-  const main = [item.technic, item.year].filter(Boolean).join(' · ');
-  return { main, dims: item.dimensions || '' };
+  const main = [I18n.data(item.technic || ''), item.year].filter(Boolean).join(' · ');
+  return { main, dims: I18n.num(item.dimensions || '') };
 }
 
 const pad = n => String(n).padStart(2, '0');
 
 function artCard(item, index, kind) {
   const { main, dims } = captionLines(item);
-  const alt = `${kind === 'painting' ? 'Painting' : 'Ceramic'} by Mohamed Amine Melehi — ${main}`;
+  const alt = `${t(kind === 'painting' ? 'paintingBy' : 'ceramicBy')} — ${main}`;
   return `
     <figure class="art-item reveal" id="${esc(item.id)}" style="--d:${(index % 3) * 0.1}s">
-      <button class="art-frame" type="button" data-gallery="${kind}" data-index="${index}" aria-label="View full image: ${esc(alt)}">
+      <button class="art-frame" type="button" data-gallery="${kind}" data-index="${index}" aria-label="${esc(t('viewFull'))}: ${esc(alt)}">
         <img src="${esc(webPath(item.image, 'thumb'))}" data-fallback="${esc(item.image)}" alt="${esc(alt)}" loading="lazy" decoding="async">
-        <span class="art-view" aria-hidden="true">View</span>
+        <span class="art-view" aria-hidden="true">${esc(t('view'))}</span>
       </button>
       <figcaption>
-        <span class="art-no">No. ${pad(index + 1)}</span>
+        <span class="art-no">${t('no')} ${pad(index + 1)}</span>
         <span class="art-main">${esc(main)}</span>
         ${dims ? `<span class="art-dims">${esc(dims)}</span>` : '<span></span>'}
       </figcaption>
@@ -325,7 +325,7 @@ const lightbox = {
     this.img.onload = () => this.img.classList.add('loaded');
     setImage(this.img, item.image, 'large');
     this.img.alt = main;
-    this.caption.innerHTML = `<span class="art-no">No. ${pad(index + 1)}</span><span class="art-main">${esc(main)}</span>${dims ? `<span class="art-dims">${esc(dims)}</span>` : ''}`;
+    this.caption.innerHTML = `<span class="art-no">${t('no')} ${pad(index + 1)}</span><span class="art-main">${esc(main)}</span>${dims ? `<span class="art-dims">${esc(dims)}</span>` : ''}`;
     this.counter.textContent = `${pad(index + 1)} / ${pad(this.items.length)}`;
     // Preload the neighbours so stepping feels instant
     [1, -1].forEach(d => {
@@ -336,6 +336,17 @@ const lightbox = {
 };
 
 /* ---------------- Boot ---------------- */
+// Everything script.js writes itself, in the current language
+function renderLocalized() {
+  renderGallery('paintings-grid', siteData.paintings, 'painting');
+  renderGallery('ceramics-grid',  siteData.ceramics,  'ceramic');
+  renderFeatured();
+  const pc = document.getElementById('paintings-count');
+  const cc = document.getElementById('ceramics-count');
+  if (pc) pc.textContent = t('works', siteData.paintings.length);
+  if (cc) cc.textContent = t('pieces', siteData.ceramics.length);
+}
+
 function markReady() {
   document.documentElement.classList.add('is-ready');
   try { sessionStorage.setItem('melehi-seen', '1'); } catch (e) {}
@@ -349,17 +360,19 @@ document.addEventListener('DOMContentLoaded', () => {
   setImage(document.getElementById('home-portrait'),       data.home.portrait,      'large');
   setImage(document.getElementById('home-book-poster'),    data.home.bookPoster,    'large');
 
-  renderGallery('paintings-grid', data.paintings, 'painting');
-  renderGallery('ceramics-grid',  data.ceramics,  'ceramic');
-  renderFeatured();
-
-  const pc = document.getElementById('paintings-count');
-  const cc = document.getElementById('ceramics-count');
-  if (pc) pc.textContent = `${data.paintings.length} works`;
-  if (cc) cc.textContent = `${data.ceramics.length} pieces`;
-
   lightbox.init();
   initContactForm();
+  document.addEventListener('langchange', () => {
+    renderLocalized();
+    revealOnScroll();
+    if (lightbox.el.classList.contains('open')) lightbox.show(lightbox.index);
+    const btn = document.getElementById('cf-submit');
+    if (btn && !btn.disabled) btn.innerHTML = `<span>${t('send')}</span>`;
+    const status = document.getElementById('form-status');
+    if (status) { status.textContent = ''; status.className = 'form-status'; }
+  });
+  I18n.init();   // picks the language and fires 'langchange', which renders the galleries
+
   showPage(location.hash.slice(1) || 'home', { push: false });
 
   if (document.documentElement.classList.contains('no-loader')) {

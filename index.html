@@ -43,10 +43,15 @@
       <li><a href="#contact" data-page="contact"><i>05</i>Contact</a></li>
     </ul>
   </nav>
-  <a class="nav-cta" href="#contact" data-page="contact">Inquire</a>
-  <button class="hamburger" type="button" aria-label="Menu" aria-controls="navLinks" onclick="toggleMenu()">
-    <span></span><span></span>
-  </button>
+  <div class="nav-end">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" lang="en" aria-label="English">EN</button>
+      <button type="button" data-lang="fr" lang="fr" aria-label="Français">FR</button>
+    </div>
+    <button class="hamburger" type="button" aria-label="Menu" aria-controls="navLinks" onclick="toggleMenu()">
+      <span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <main>
@@ -99,7 +104,7 @@
           <span class="collection-body">
             <span class="collection-no">I</span>
             <span class="collection-title">Paintings</span>
-            <span class="collection-meta">Acrylic on canvas · 2010 – 2016</span>
+            <span class="collection-meta">Acrylic on canvas · 1996 – 2022</span>
             <span class="link-arrow">Explore the collection</span>
           </span>
         </a>
@@ -192,7 +197,7 @@
     </div>
   </section>
   <div class="wrap collection-bar">
-    <span>Acrylic on canvas &amp; paper</span>
+    <span>Acrylic on canvas</span>
     <span>Select a work to view it in full</span>
   </div>
   <div class="wrap art-grid" id="paintings-grid"></div>
@@ -268,6 +273,10 @@
     <div class="exhibitions-section">
       <h2>Art Exhibitions</h2>
       <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-venues">Centre Hassan II des Rencontres Internationales — Cultural Moussems of <strong>Assilah</strong></div>
+        </div>
         <div class="timeline-item">
           <div class="timeline-year">2025</div>
           <div class="timeline-venues">Palais des Arts de Tanger — In collaboration with <strong>"International Exhibition of Technology and Innovation"</strong>, Tangier</div>
@@ -484,6 +493,7 @@
   </div>
 </div>
 
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

@@ -3,135 +3,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Melehi Art — Mohamed Amine Melehi</title>
+<title>Mohamed Amine Melehi — Painter &amp; Ceramist · Melehi Art</title>
+<meta name="description" content="The official portfolio of Mohamed Amine Melehi, Moroccan painter and ceramist born in Asilah in 1953. Paintings, ceramics, biography and inquiries.">
+<meta name="theme-color" content="#0f0d0a">
+<meta property="og:title" content="Mohamed Amine Melehi — Painter & Ceramist">
+<meta property="og:description" content="Paintings and ceramics by Mohamed Amine Melehi, Asilah, Morocco.">
+<meta property="og:image" content="assets/web/large/home/painting_overview.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230f0d0a'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-style='italic' font-size='40' fill='%23c9a86a' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+  // Show the intro loader only once per visit
+  try { if (sessionStorage.getItem('melehi-seen')) document.documentElement.classList.add('no-loader'); } catch (e) {}
+</script>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a class="nav-logo" href="#home" data-page="home"><span>Melehi</span> Art</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#home" data-page="home">Home</a></li>
-    <li><a href="#paintings" data-page="paintings">Paintings</a></li>
-    <li><a href="#ceramics" data-page="ceramics">Ceramics</a></li>
-    <li><a href="#biography" data-page="biography">Biography</a></li>
-    <li><a href="#contact" data-page="contact">Contact</a></li>
-  </ul>
-  <button class="hamburger" type="button" aria-label="Menu" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+<!-- INTRO LOADER -->
+<div class="loader" aria-hidden="true">
+  <div class="loader-mark">M</div>
+  <div class="loader-name">Melehi</div>
+  <div class="loader-bar"><span></span></div>
+</div>
 
+<!-- NAV -->
+<header id="nav" class="nav">
+  <a class="nav-logo" href="#home" data-page="home" aria-label="Melehi Art — Home">
+    <span class="nav-logo-name">Melehi</span>
+    <span class="nav-logo-sub">Fine Art</span>
+  </a>
+  <nav aria-label="Main">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-page="home"><i>01</i>Home</a></li>
+      <li><a href="#paintings" data-page="paintings"><i>02</i>Paintings</a></li>
+      <li><a href="#ceramics" data-page="ceramics"><i>03</i>Ceramics</a></li>
+      <li><a href="#biography" data-page="biography"><i>04</i>Biography</a></li>
+      <li><a href="#contact" data-page="contact"><i>05</i>Contact</a></li>
+    </ul>
+  </nav>
+  <a class="nav-cta" href="#contact" data-page="contact">Inquire</a>
+  <button class="hamburger" type="button" aria-label="Menu" aria-controls="navLinks" onclick="toggleMenu()">
+    <span></span><span></span>
+  </button>
+</header>
+
+<main>
 <!-- ======================== HOME PAGE ======================== -->
 <div id="page-home" class="page active">
+
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-shade"></div>
-    <div class="hero-pattern"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow">Asilah, Morocco · Est. 1953</div>
-      <h1 class="hero-title">Med<br><em>Amine</em><br>Melehi</h1>
-      <p class="hero-sub">Painter, ceramist, and keeper of stories — a lifetime of art rooted in Moroccan earth.</p>
-      <a class="hero-cta" href="#biography" data-page="biography">Discover the Artist</a>
+    <div class="hero-inner">
+      <p class="eyebrow eyebrow--light hero-fade">Painter &amp; Ceramist · Asilah, Morocco</p>
+      <h1 class="hero-title">
+        <span class="ln"><span>Mohamed</span></span>
+        <span class="ln"><span><em>Amine</em> Melehi</span></span>
+      </h1>
+      <p class="hero-sub hero-fade">Painter, ceramist, and keeper of stories — a lifetime of art rooted in Moroccan earth.</p>
+      <a class="btn btn--light hero-fade" href="#biography" data-page="biography"><span>Discover the Artist</span></a>
     </div>
-    <div class="hero-year">1953</div>
-    <div class="hero-scroll" aria-hidden="true"><span></span></div>
+    <div class="hero-meta hero-fade" aria-hidden="true">
+      <span>Est. 1953</span>
+      <span class="hero-scroll"><i></i></span>
+    </div>
   </section>
 
-  <!-- Portfolio Overview -->
-  <section class="home-section">
-    <div class="section-label">Artistic Portfolio</div>
-    <h2 class="section-title">A World of<br>Form & Color</h2>
-    <p class="section-body">Explore the captivating collection of Mohamed Amine Melehi — paintings that navigate between structure and spontaneity, and ceramics that embody a unique blend of tradition and innovation.</p>
-
-    <div class="home-grid">
-      <div class="home-card reveal" data-page="paintings">
-        <img id="home-paintings-card" class="home-card-img" alt="Paintings Overview" loading="lazy">
-        <div class="home-card-label">
-          <h3>Paintings</h3>
-          <p>Acrylic on canvas · 2010–2016</p>
-        </div>
-      </div>
-      <div class="home-card reveal" data-page="ceramics">
-        <img id="home-ceramics-card" class="home-card-img" alt="Ceramics Overview" loading="lazy">
-        <div class="home-card-label">
-          <h3>Ceramics</h3>
-          <p>Surrealistic forms · Geometric elegance</p>
-        </div>
+  <!-- Statement -->
+  <section class="section intro">
+    <div class="wrap intro-grid">
+      <p class="eyebrow reveal"><b>01</b> The Practice</p>
+      <div>
+        <p class="intro-lead reveal">“His work navigates between <em>structure</em> and <em>spontaneity</em>, creating a balance where imagination unfolds freely.”</p>
+        <dl class="stats reveal">
+          <div><dt>1971</dt><dd>First exhibition</dd></div>
+          <div><dt>34</dt><dd>Years teaching plastic arts</dd></div>
+          <div><dt>5</dt><dd>Countries exhibited</dd></div>
+        </dl>
       </div>
     </div>
   </section>
 
-  <!-- Biography Teaser -->
-  <section class="home-section">
-    <div class="section-label">The Artist</div>
-    <div class="bio-teaser reveal">
-      <div class="bio-portrait">
-        <img id="home-portrait" class="placeholder-img" alt="Mohamed Amine Melehi" loading="lazy" style="width:100%;display:block;aspect-ratio:3/4;object-fit:cover">
+  <!-- Collections -->
+  <section class="section collections">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow"><b>02</b> Collections</p>
+        <h2 class="display">Two languages,<br><em>one vision</em></h2>
       </div>
-      <div class="bio-text">
-        <div class="section-label">Biography</div>
-        <h2 class="section-title">Born in Asilah,<br>Shaped by Morocco</h2>
-        <div class="quote">"His work navigates between structure and spontaneity, creating a balance where imagination unfolds freely."</div>
-        <p class="section-body">Born in 1953 in the picturesque coastal town of Asilah, Mohamed Amine Melehi dedicated decades to the plastic arts — teaching, creating, and exhibiting across Morocco and around the globe. He studied at the prestigious School of Arts and Architecture of Marseille, and returned home to leave a lasting mark on Moroccan cultural life.</p>
-        <button class="explore-link" data-page="biography">Full Biography</button>
+      <div class="collection-grid">
+        <a class="collection-card reveal" href="#paintings" data-page="paintings">
+          <span class="collection-media"><img id="home-paintings-card" alt="Paintings by Mohamed Amine Melehi" loading="lazy"></span>
+          <span class="collection-body">
+            <span class="collection-no">I</span>
+            <span class="collection-title">Paintings</span>
+            <span class="collection-meta">Acrylic on canvas · 2010 – 2016</span>
+            <span class="link-arrow">Explore the collection</span>
+          </span>
+        </a>
+        <a class="collection-card collection-card--offset reveal" href="#ceramics" data-page="ceramics">
+          <span class="collection-media"><img id="home-ceramics-card" alt="Ceramics by Mohamed Amine Melehi" loading="lazy"></span>
+          <span class="collection-body">
+            <span class="collection-no">II</span>
+            <span class="collection-title">Ceramics</span>
+            <span class="collection-meta">Surrealistic forms · Geometric elegance</span>
+            <span class="link-arrow">Explore the collection</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected works -->
+  <section class="section section--dark featured">
+    <div class="wrap">
+      <div class="section-head section-head--split reveal">
+        <div>
+          <p class="eyebrow eyebrow--light"><b>03</b> Selected Works</p>
+          <h2 class="display">Colour as<br><em>a living geometry</em></h2>
+        </div>
+        <a class="link-arrow link-arrow--light" href="#paintings" data-page="paintings">View all paintings</a>
+      </div>
+      <div class="featured-grid" id="featured-works"></div>
+    </div>
+  </section>
+
+  <!-- Exhibited in -->
+  <section class="marquee" aria-label="Exhibited in">
+    <div class="marquee-track">
+      <span>Tangier</span><span>Rabat</span><span>Casablanca</span><span>Marrakech</span><span>Asilah</span><span>Fes</span><span>Tétouan</span><span>Aix-en-Provence</span><span>Douai</span><span>Cairo</span><span>Choueifat</span><span>Karlovy Vary</span>
+      <span aria-hidden="true">Tangier</span><span aria-hidden="true">Rabat</span><span aria-hidden="true">Casablanca</span><span aria-hidden="true">Marrakech</span><span aria-hidden="true">Asilah</span><span aria-hidden="true">Fes</span><span aria-hidden="true">Tétouan</span><span aria-hidden="true">Aix-en-Provence</span><span aria-hidden="true">Douai</span><span aria-hidden="true">Cairo</span><span aria-hidden="true">Choueifat</span><span aria-hidden="true">Karlovy Vary</span>
+    </div>
+  </section>
+
+  <!-- The artist -->
+  <section class="section artist">
+    <div class="wrap artist-grid">
+      <figure class="artist-portrait reveal">
+        <img id="home-portrait" alt="Portrait of Mohamed Amine Melehi" loading="lazy">
+        <figcaption>Mohamed Amine Melehi · Asilah</figcaption>
+      </figure>
+      <div class="artist-text reveal">
+        <p class="eyebrow"><b>04</b> The Artist</p>
+        <h2 class="display">Born in Asilah,<br><em>shaped by Morocco</em></h2>
+        <p class="body-lg">Born in 1953 in the picturesque coastal town of Asilah, Mohamed Amine Melehi dedicated decades to the plastic arts — teaching, creating, and exhibiting across Morocco and around the globe.</p>
+        <p class="body">He studied at the prestigious School of Arts and Architecture of Marseille, and returned home to leave a lasting mark on Moroccan cultural life — as Professor of Plastic Arts in Asilah and head of the Ceramics and Sculpture Workshop of the International Cultural Moussem.</p>
+        <a class="btn btn--dark" href="#biography" data-page="biography"><span>Full Biography</span></a>
       </div>
     </div>
   </section>
 
   <!-- Book -->
-  <section class="book-section reveal">
-    <div>
-      <div class="section-label" style="color:var(--ochre)">Published Work</div>
-      <h2 class="section-title">101 Moroccan<br>Folk Tales</h2>
-      <p class="section-body">Discover one hundred and one traditional Moroccan folk tales, lovingly collected and arranged in Asilah by Mohamed Amine Melehi. A treasure trove of coastal and Moroccan heritage, bridging generations through the art of storytelling.</p>
-      <a class="explore-link" href="#contact" data-page="contact">Ask About the Book</a>
+  <section class="section section--sand book">
+    <div class="wrap book-grid">
+      <div class="book-text reveal">
+        <p class="eyebrow"><b>05</b> Published Work</p>
+        <h2 class="display">101 Moroccan<br><em>Folk Tales</em></h2>
+        <p class="body-lg">One hundred and one traditional Moroccan folk tales, lovingly collected and arranged in Asilah by Mohamed Amine Melehi.</p>
+        <p class="body">A treasure trove of coastal and Moroccan heritage, bridging generations through the art of storytelling.</p>
+        <a class="link-arrow" href="#contact" data-page="contact">Ask about the book</a>
+      </div>
+      <div class="book-cover reveal">
+        <img id="home-book-poster" alt="101 Contes Populaires du Maroc — book cover" loading="lazy">
+      </div>
     </div>
-    <div class="book-cover">
-      <img id="home-book-poster" src="" alt="101 Contes Populaires du Maroc" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+  </section>
+
+  <!-- Inquiry band -->
+  <section class="cta-band">
+    <div class="cta-band-inner reveal">
+      <p class="eyebrow eyebrow--light eyebrow--center">Acquisitions &amp; Commissions</p>
+      <h2 class="display">Bring a Melehi<br><em>into your collection</em></h2>
+      <p>For acquisitions, exhibitions or commissions, the artist welcomes your inquiry.</p>
+      <a class="btn btn--light" href="#contact" data-page="contact"><span>Make an Inquiry</span></a>
     </div>
   </section>
 </div>
 
 <!-- ======================== PAINTINGS PAGE ======================== -->
 <div id="page-paintings" class="page">
-  <div class="page-hero page-hero--paintings">
-    <div class="page-hero-label">Collection · <span id="paintings-count"></span></div>
-    <h1 class="page-hero-title">Paintings</h1>
-    <p class="page-hero-desc">Through essential forms and meaningful motifs, the canvas becomes a space of symbols and dialogue — structure meeting spontaneity.</p>
+  <section class="page-hero page-hero--paintings">
+    <div class="page-hero-inner">
+      <p class="eyebrow eyebrow--light">Collection I · <span id="paintings-count"></span></p>
+      <h1 class="page-hero-title">Paintings</h1>
+      <p class="page-hero-desc">Through essential forms and meaningful motifs, the canvas becomes a space of symbols and dialogue — structure meeting spontaneity.</p>
+    </div>
+  </section>
+  <div class="wrap collection-bar">
+    <span>Acrylic on canvas &amp; paper</span>
+    <span>Select a work to view it in full</span>
   </div>
-
-  <div class="art-grid" id="paintings-grid">
-  </div>
+  <div class="wrap art-grid" id="paintings-grid"></div>
+  <a class="next-page" href="#ceramics" data-page="ceramics">
+    <span class="eyebrow">Next collection</span>
+    <span class="next-page-title">Ceramics <i>→</i></span>
+  </a>
 </div>
 
 <!-- ======================== CERAMICS PAGE ======================== -->
 <div id="page-ceramics" class="page">
-  <div class="page-hero page-hero--ceramics">
-    <div class="page-hero-label">Collection · <span id="ceramics-count"></span></div>
-    <h1 class="page-hero-title">Ceramics</h1>
-    <p class="page-hero-desc">From surrealistic forms to geometric elegance, each piece embodies a unique blend of Moroccan tradition and contemporary innovation.</p>
+  <section class="page-hero page-hero--ceramics">
+    <div class="page-hero-inner">
+      <p class="eyebrow eyebrow--light">Collection II · <span id="ceramics-count"></span></p>
+      <h1 class="page-hero-title">Ceramics</h1>
+      <p class="page-hero-desc">From surrealistic forms to geometric elegance, each piece embodies a unique blend of Moroccan tradition and contemporary innovation.</p>
+    </div>
+  </section>
+  <div class="wrap collection-bar">
+    <span>Stoneware, terracotta &amp; faience</span>
+    <span>Select a piece to view it in full</span>
   </div>
-
-  <div class="art-grid" id="ceramics-grid">
-  </div>
+  <div class="wrap art-grid" id="ceramics-grid"></div>
+  <a class="next-page" href="#biography" data-page="biography">
+    <span class="eyebrow">Meet the artist</span>
+    <span class="next-page-title">Biography <i>→</i></span>
+  </a>
 </div>
 
 <!-- ======================== BIOGRAPHY PAGE ======================== -->
 <div id="page-biography" class="page bio-page">
-  <div class="bio-header">
-    <div class="bio-photo-wrap">
-      <img src="assets/biography/portrait_web.jpg" alt="Mohamed Amine Melehi">
+  <section class="bio-hero">
+    <div class="wrap bio-hero-grid">
+      <figure class="bio-photo">
+        <img src="assets/biography/portrait_web.jpg" alt="Mohamed Amine Melehi">
+      </figure>
+      <div class="bio-intro">
+        <p class="eyebrow eyebrow--light">Artist · Ceramist · Educator</p>
+        <h1 class="bio-name">Mohamed<br><em>Amine</em> Melehi</h1>
+        <p class="bio-lead">Born in 1953 in the picturesque coastal town of Asilah, Morocco. With decades of artistic practice, teaching, and international exhibitions, his work has become an enduring part of Moroccan cultural heritage.</p>
+        <dl class="bio-facts">
+          <div><dt>Born</dt><dd>1953, Asilah</dd></div>
+          <div><dt>Studied</dt><dd>Marseille, France</dd></div>
+          <div><dt>Disciplines</dt><dd>Painting · Ceramics</dd></div>
+        </dl>
+      </div>
     </div>
-    <div class="bio-intro">
-      <div class="eyebrow">Artist · Ceramist · Educator</div>
-      <h1>Mohamed<br>Amine<br>Melehi</h1>
-      <p>Born in 1953 in the picturesque coastal town of Asilah, Morocco. With decades of artistic practice, teaching, and international exhibitions, his work has become an enduring part of Moroccan cultural heritage.</p>
-    </div>
-  </div>
+  </section>
+
+  <section class="bio-quote">
+    <blockquote class="wrap reveal">“The canvas becomes a space of symbols and dialogue — where structure meets spontaneity.”</blockquote>
+  </section>
 
   <div class="bio-body">
     <div class="bio-cols">
@@ -262,35 +375,29 @@
 <!-- ======================== CONTACT PAGE ======================== -->
 <div id="page-contact" class="page">
   <div class="contact-page">
-    <div class="contact-left">
-      <div class="section-label">Get in Touch</div>
-      <h2 class="section-title">Let's<br>Connect</h2>
-      <p>Whether you're interested in acquiring a piece, organizing an exhibition, or simply wish to learn more about the work of Mohamed Amine Melehi, reach out.</p>
-      <ul class="contact-details">
-        <li>
-          <span class="icon">✉</span>
-          <a href="mailto:medamine.melehi@gmail.com">medamine.melehi@gmail.com</a>
-        </li>
-        <li>
-          <span class="icon">✆</span>
-          <a href="tel:+212708995675">+212 7 08 99 56 75</a>
-        </li>
-        <li>
-          <span class="icon">◎</span>
-          <span>Asilah, Morocco</span>
-        </li>
-      </ul>
-      <div class="social-row">
-        <a class="social-btn" href="https://www.facebook.com/Medamine.melehi/" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+    <aside class="contact-aside">
+      <div class="contact-aside-inner">
+        <p class="eyebrow eyebrow--light">Get in Touch</p>
+        <h1 class="display">Let’s<br><em>connect</em></h1>
+        <p class="contact-intro">Whether you’re interested in acquiring a piece, organizing an exhibition, or simply wish to learn more about the work of Mohamed Amine Melehi, reach out.</p>
+        <ul class="contact-details">
+          <li><span class="label">Email</span><a href="mailto:medamine.melehi@gmail.com">medamine.melehi@gmail.com</a></li>
+          <li><span class="label">Telephone</span><a href="tel:+212708995675">+212 7 08 99 56 75</a></li>
+          <li><span class="label">Studio</span><span>Asilah, Morocco</span></li>
+        </ul>
+        <div class="social-row">
+          <a class="social-btn" href="https://www.facebook.com/Medamine.melehi/" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H8.1v3h2.5V21h2.9z"/></svg>
         </a>
         <a class="social-btn" href="https://www.instagram.com/mohamedaminemelehi/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
         </a>
+        </div>
       </div>
-    </div>
-    <div class="contact-right">
-      <h2>Send a Message</h2>
+    </aside>
+    <div class="contact-main">
+      <p class="eyebrow">Inquiries</p>
+      <h2 class="display display--sm">Send a <em>message</em></h2>
       <form id="contact-form" novalidate>
         <div class="form-row">
           <div class="form-group">
@@ -316,25 +423,61 @@
         </div>
         <!-- Honeypot: hidden from people, bots fill it in -->
         <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="submit-btn" id="cf-submit" type="submit">Send Message</button>
+        <button class="btn btn--dark btn--block" id="cf-submit" type="submit"><span>Send Message</span></button>
         <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
       </form>
     </div>
   </div>
 </div>
+</main>
 
-<footer>
-  <p>© 2026 Melehi Art · Asilah, Morocco · <a href="mailto:medamine.melehi@gmail.com">medamine.melehi@gmail.com</a></p>
+<footer class="footer">
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a class="footer-logo" href="#home" data-page="home">Melehi</a>
+      <p>Painter &amp; ceramist · Asilah, Morocco</p>
+    </div>
+    <div class="footer-col">
+      <span class="footer-label">Explore</span>
+      <a href="#paintings" data-page="paintings">Paintings</a>
+      <a href="#ceramics" data-page="ceramics">Ceramics</a>
+      <a href="#biography" data-page="biography">Biography</a>
+      <a href="#contact" data-page="contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <span class="footer-label">Contact</span>
+      <a href="mailto:medamine.melehi@gmail.com">medamine.melehi@gmail.com</a>
+      <a href="tel:+212708995675">+212 7 08 99 56 75</a>
+      <div class="social-row social-row--footer">
+        <a class="social-btn" href="https://www.facebook.com/Medamine.melehi/" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H8.1v3h2.5V21h2.9z"/></svg>
+        </a>
+        <a class="social-btn" href="https://www.instagram.com/mohamedaminemelehi/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Mohamed Amine Melehi · All rights reserved</span>
+    <button class="to-top" type="button" data-top>Back to top <i>↑</i></button>
+  </div>
 </footer>
 
 <!-- LIGHTBOX -->
 <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer" aria-hidden="true">
-  <button class="lb-close" type="button" aria-label="Close">&times;</button>
-  <button class="lb-nav lb-prev" type="button" aria-label="Previous">&#8249;</button>
+  <button class="lb-close" type="button" aria-label="Close">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+  </button>
+  <button class="lb-nav lb-prev" type="button" aria-label="Previous">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+  </button>
   <div class="lb-stage">
     <img id="lightbox-img" alt="">
   </div>
-  <button class="lb-nav lb-next" type="button" aria-label="Next">&#8250;</button>
+  <button class="lb-nav lb-next" type="button" aria-label="Next">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+  </button>
   <div class="lb-footer">
     <div id="lightbox-caption" class="lb-caption"></div>
     <div id="lightbox-counter" class="lb-counter"></div>

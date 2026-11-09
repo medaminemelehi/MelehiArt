@@ -11,7 +11,8 @@ const siteData = {
     "paintingsCard": "assets/home/painting_overview.jpg",
     "ceramicsCard": "assets/home/ceramic_overview.JPG",
     "portrait": "assets/home/portrait_picture.png",
-    "bookPoster": "assets/home/book_poster.png"
+    "bookPoster": "assets/home/book_poster.png",
+    "featured": ["painting-3", "painting-20", "painting-18", "painting-6", "painting-21", "painting-1"]
   },
   "paintings": [
     { "id": "painting-1",  "image": "assets/paintings/IMG_1034 2.jpg", "technic": "Acrylic on canvas", "year": "2014", "dimensions": "100 x 120 cm" },
@@ -50,29 +51,54 @@ const siteData = {
   ]
 };
 
+/* ---------------- Image helpers ---------------- */
+// Gallery images are served from web-sized copies built by tools/optimize-images.sh.
+// If a copy is missing (e.g. a newly added image), the original file is used instead.
+const webPath = (src, size) => src.replace(/^assets\//, `assets/web/${size}/`).replace(/\.png$/i, '.jpg');
+
+function setImage(img, src, size) {
+  if (!img || !src) return;
+  img.onerror = () => { img.onerror = null; img.src = src; };
+  img.src = webPath(src, size);
+}
+
 /* ---------------- Navigation ---------------- */
 const PAGES = ['home', 'paintings', 'ceramics', 'biography', 'contact'];
+// Pages whose top section is dark, so the nav starts transparent over it
+const DARK_TOP = ['home', 'paintings', 'ceramics', 'biography'];
+let currentPage = 'home';
 
 function showPage(id, { push = true } = {}) {
   if (!PAGES.includes(id)) id = 'home';
+  currentPage = id;
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   document.querySelectorAll('.nav-links a').forEach(a =>
     a.classList.toggle('active', a.dataset.page === id));
+  document.body.dataset.current = id;
   if (push && location.hash !== '#' + id) history.pushState(null, '', '#' + id);
   window.scrollTo({ top: 0, behavior: 'instant' });
+  updateNav();
   revealOnScroll();
 }
 
-function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
-  document.querySelector('.hamburger').classList.toggle('open');
+function updateNav() {
+  const nav = document.getElementById('nav');
+  const y = window.scrollY;
+  nav.classList.toggle('is-clear', DARK_TOP.includes(currentPage) && y < 60);
+  nav.classList.toggle('is-compact', y > 60);
 }
 
-function closeMenu() {
-  document.getElementById('navLinks').classList.remove('open');
-  document.querySelector('.hamburger').classList.remove('open');
+function toggleMenu(force) {
+  const links = document.getElementById('navLinks');
+  const open = typeof force === 'boolean' ? force : !links.classList.contains('open');
+  links.classList.toggle('open', open);
+  document.querySelector('.hamburger').classList.toggle('open', open);
+  document.getElementById('nav').classList.toggle('menu-open', open);
+  document.body.classList.toggle('no-scroll', open);
 }
+
+function closeMenu() { toggleMenu(false); }
 
 /* ---------------- Contact form (Formspree) ---------------- */
 // Paste your Formspree form URL here (e.g. https://formspree.io/f/abcd1234). Safe to be public.
@@ -116,18 +142,34 @@ function initContactForm() {
 
 // Any element with data-page="x" navigates to page x
 document.addEventListener('click', e => {
+  if (e.target.closest('[data-top]')) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
   const link = e.target.closest('[data-page]');
   if (!link) return;
   e.preventDefault();
-  showPage(link.dataset.page);
   closeMenu();
+  showPage(link.dataset.page);
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('navLinks').classList.contains('open')) closeMenu();
 });
 
 window.addEventListener('popstate', () => showPage(location.hash.slice(1), { push: false }));
 
+// Nav state + gentle hero parallax
+let ticking = false;
 window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
-});
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    updateNav();
+    if (currentPage === 'home' && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const y = Math.min(window.scrollY, window.innerHeight);
+      document.querySelector('.hero-bg').style.setProperty('--parallax', `${y * 0.22}px`);
+    }
+    ticking = false;
+  });
+}, { passive: true });
 
 /* ---------------- Reveal-on-scroll ---------------- */
 const revealObserver = 'IntersectionObserver' in window
@@ -135,7 +177,7 @@ const revealObserver = 'IntersectionObserver' in window
       entries.forEach(en => {
         if (en.isIntersecting) { en.target.classList.add('in'); revealObserver.unobserve(en.target); }
       });
-    }, { threshold: 0.08 })
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
   : null;
 
 function revealOnScroll() {
@@ -154,29 +196,50 @@ function captionLines(item) {
   return { main, dims: item.dimensions || '' };
 }
 
+const pad = n => String(n).padStart(2, '0');
+
+function artCard(item, index, kind) {
+  const { main, dims } = captionLines(item);
+  const alt = `${kind === 'painting' ? 'Painting' : 'Ceramic'} by Mohamed Amine Melehi — ${main}`;
+  return `
+    <figure class="art-item reveal" id="${esc(item.id)}" style="--d:${(index % 3) * 0.1}s">
+      <button class="art-frame" type="button" data-gallery="${kind}" data-index="${index}" aria-label="View full image: ${esc(alt)}">
+        <img src="${esc(webPath(item.image, 'thumb'))}" data-fallback="${esc(item.image)}" alt="${esc(alt)}" loading="lazy" decoding="async">
+        <span class="art-view" aria-hidden="true">View</span>
+      </button>
+      <figcaption>
+        <span class="art-no">No. ${pad(index + 1)}</span>
+        <span class="art-main">${esc(main)}</span>
+        ${dims ? `<span class="art-dims">${esc(dims)}</span>` : '<span></span>'}
+      </figcaption>
+    </figure>`;
+}
+
 function renderGallery(gridId, items, kind) {
   const grid = document.getElementById(gridId);
   if (!grid || !items) return;
-  grid.innerHTML = items.map((item, i) => {
-    const { main, dims } = captionLines(item);
-    const alt = kind === 'painting'
-      ? `Painting by Mohamed Amine Melehi — ${main}`
-      : `Ceramic by Mohamed Amine Melehi — ${main}`;
-    return `
-      <figure class="art-item reveal" id="${esc(item.id)}">
-        <button class="art-frame" type="button" data-gallery="${kind}" data-index="${i}" aria-label="View full image: ${esc(alt)}">
-          <img src="${esc(item.image)}" alt="${esc(alt)}" loading="lazy">
-          <span class="art-zoom" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-          </span>
-        </button>
-        <figcaption>
-          <span class="art-main">${esc(main)}</span>
-          ${dims ? `<span class="art-dims">${esc(dims)}</span>` : ''}
-        </figcaption>
-      </figure>`;
-  }).join('');
+  grid.innerHTML = items.map((item, i) => artCard(item, i, kind)).join('');
 }
+
+function renderFeatured() {
+  const grid = document.getElementById('featured-works');
+  if (!grid) return;
+  const ids = siteData.home.featured || [];
+  grid.innerHTML = ids
+    .map(id => siteData.paintings.findIndex(p => p.id === id))
+    .filter(i => i >= 0)
+    .map(i => artCard(siteData.paintings[i], i, 'painting'))
+    .join('');
+}
+
+// Fall back to the original file if a web-sized copy is missing
+document.addEventListener('error', e => {
+  const img = e.target;
+  if (img.tagName === 'IMG' && img.dataset.fallback && img.src.indexOf(img.dataset.fallback) === -1) {
+    img.src = img.dataset.fallback;
+    delete img.dataset.fallback;
+  }
+}, true);
 
 /* ---------------- Lightbox ---------------- */
 const lightbox = {
@@ -235,7 +298,7 @@ const lightbox = {
     this.el.classList.remove('open');
     this.el.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('no-scroll');
-    if (this.lastFocus) this.lastFocus.focus();
+    if (this.lastFocus) this.lastFocus.focus({ preventScroll: true });
   },
 
   step(d) {
@@ -248,25 +311,35 @@ const lightbox = {
     const { main, dims } = captionLines(item);
     this.img.classList.remove('loaded');
     this.img.onload = () => this.img.classList.add('loaded');
-    this.img.src = item.image;
+    setImage(this.img, item.image, 'large');
     this.img.alt = main;
-    this.caption.innerHTML = `<span class="art-main">${esc(main)}</span>${dims ? `<span class="art-dims">${esc(dims)}</span>` : ''}`;
-    this.counter.textContent = `${index + 1} / ${this.items.length}`;
+    this.caption.innerHTML = `<span class="art-no">No. ${pad(index + 1)}</span><span class="art-main">${esc(main)}</span>${dims ? `<span class="art-dims">${esc(dims)}</span>` : ''}`;
+    this.counter.textContent = `${pad(index + 1)} / ${pad(this.items.length)}`;
+    // Preload the neighbours so stepping feels instant
+    [1, -1].forEach(d => {
+      const n = this.items[(index + d + this.items.length) % this.items.length];
+      if (n) new Image().src = webPath(n.image, 'large');
+    });
   }
 };
 
 /* ---------------- Boot ---------------- */
+function markReady() {
+  document.documentElement.classList.add('is-ready');
+  try { sessionStorage.setItem('melehi-seen', '1'); } catch (e) {}
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const data = siteData;
 
-  const set = (id, src) => { const el = document.getElementById(id); if (el) el.src = src; };
-  set('home-paintings-card', data.home.paintingsCard);
-  set('home-ceramics-card',  data.home.ceramicsCard);
-  set('home-portrait',       data.home.portrait);
-  set('home-book-poster',    data.home.bookPoster);
+  setImage(document.getElementById('home-paintings-card'), data.home.paintingsCard, 'large');
+  setImage(document.getElementById('home-ceramics-card'),  data.home.ceramicsCard,  'large');
+  setImage(document.getElementById('home-portrait'),       data.home.portrait,      'large');
+  setImage(document.getElementById('home-book-poster'),    data.home.bookPoster,    'large');
 
   renderGallery('paintings-grid', data.paintings, 'painting');
   renderGallery('ceramics-grid',  data.ceramics,  'ceramic');
+  renderFeatured();
 
   const pc = document.getElementById('paintings-count');
   const cc = document.getElementById('ceramics-count');
@@ -276,4 +349,14 @@ document.addEventListener('DOMContentLoaded', () => {
   lightbox.init();
   initContactForm();
   showPage(location.hash.slice(1) || 'home', { push: false });
+
+  if (document.documentElement.classList.contains('no-loader')) {
+    requestAnimationFrame(markReady);
+  } else {
+    // Hold the intro briefly, but never longer than ~2.2s
+    const minDelay = new Promise(r => setTimeout(r, 1300));
+    const loaded = new Promise(r => window.addEventListener('load', r, { once: true }));
+    const cap = new Promise(r => setTimeout(r, 2200));
+    Promise.race([Promise.all([minDelay, loaded]), cap]).then(markReady);
+  }
 });

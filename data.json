@@ -3,7 +3,15 @@
     "paintingsCard": "assets/home/painting_overview.jpg",
     "ceramicsCard": "assets/home/ceramic_overview.JPG",
     "portrait": "assets/home/portrait_picture.png",
-    "bookPoster": "assets/home/book_poster.png"
+    "bookPoster": "assets/home/book_poster.png",
+    "featured": [
+      "painting-3",
+      "painting-20",
+      "painting-18",
+      "painting-6",
+      "painting-21",
+      "painting-1"
+    ]
   },
   "paintings": [
     {

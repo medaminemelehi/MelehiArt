@@ -114,6 +114,21 @@ function initContactForm() {
   });
 }
 
+// Any element with data-page="x" navigates to page x
+document.addEventListener('click', e => {
+  const link = e.target.closest('[data-page]');
+  if (!link) return;
+  e.preventDefault();
+  showPage(link.dataset.page);
+  closeMenu();
+});
+
+window.addEventListener('popstate', () => showPage(location.hash.slice(1), { push: false }));
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
 /* ---------------- Reveal-on-scroll ---------------- */
 const revealObserver = 'IntersectionObserver' in window
   ? new IntersectionObserver(entries => {

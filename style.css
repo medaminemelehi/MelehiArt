@@ -199,7 +199,7 @@ button { font: inherit; color: inherit; }
 }
 .nav.is-clear { background: transparent; color: #fff; border-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
 .nav.is-compact { height: 70px; }
-.nav-logo { display: inline-flex; flex-direction: column; text-decoration: none; line-height: 1; justify-self: start; }
+.nav-logo { display: inline-flex; flex-direction: column; text-decoration: none; line-height: 1; justify-self: start; position: relative; z-index: 2; }
 .nav-logo-name { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; }
 .nav-logo-sub { font-size: 0.55rem; letter-spacing: 0.62em; text-transform: uppercase; color: var(--brass); margin-top: 0.45rem; }
 .nav.is-clear .nav-logo-sub { color: var(--brass-l); }
@@ -798,7 +798,9 @@ body.no-scroll { overflow: hidden; }
   .nav-links a i { display: inline; font-family: var(--sans); font-style: normal; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--brass-l); }
   .nav-links a::after { display: none; }
   .nav-links a.active { color: var(--brass-l); }
-  .nav.menu-open { color: #fff; background: transparent; border-color: transparent; }
+  /* No blur while the menu is open: backdrop-filter would make the fixed full-screen
+     menu size itself to the nav bar instead of the screen once the page is scrolled */
+  .nav.menu-open { color: #fff; background: transparent; border-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
   .nav.menu-open .nav-logo-sub { color: var(--brass-l); }
 
   .intro-grid { grid-template-columns: 1fr; gap: 1rem; }

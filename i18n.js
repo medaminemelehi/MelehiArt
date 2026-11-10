@@ -149,7 +149,7 @@ const FR = {
   "Read the press": "Lire la presse",
   "Interview": "Entretien",
   "Al Bayan (UAE)": "Al Bayan (Émirats arabes unis)",
-  "Mohamed Melehi’s ceramics in Rabat": "Les céramiques de Mohamed Melehi à Rabat",
+  "Mohamed Amine Melehi’s ceramics in Rabat": "Les céramiques de Mohamed Amine Melehi à Rabat",
   "“I do not work for the taste of an imagined audience”": "« Je ne travaille pas pour le goût d’un public imaginé »",
   "Ceramics, a living and speaking art: “the public loves quality and dislikes emptiness”": "La céramique, un art vivant et parlant : « le public aime la qualité et n’aime pas le vide »",
   "“In my painting, Arabic calligraphy meets European geometric lines”": "« Dans ma peinture, la calligraphie arabe rencontre les lignes géométriques européennes »",

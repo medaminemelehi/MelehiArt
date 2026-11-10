@@ -134,6 +134,35 @@ const FR = {
     'Diplôme d’Arts Appliqués, section Céramique — Lycée Alkhansa, Casablanca',
   'Art Exhibitions': 'Expositions',
   'In the Press': 'Dans la presse',
+  "Press": "Presse",
+  "Press & Writings ·": "Presse & écrits ·",
+  "Articles, interviews and reviews from the Moroccan, Arab and French-language press — from the first exhibitions to today.": "Articles, entretiens et critiques parus dans la presse marocaine, arabe et francophone — des premières expositions à aujourd’hui.",
+  "Articles · Interviews · Reviews": "Articles · Entretiens · Critiques",
+  "Select a clipping to read it in full": "Sélectionnez une coupure pour la lire en entier",
+  "Online articles": "Articles en ligne",
+  "Press archive": "Archives de presse",
+  "Newspaper clippings from the artist’s archive, 1994 – 1999.": "Coupures de presse issues des archives de l’artiste, 1994 – 1999.",
+  "Press & inquiries": "Presse & demandes",
+  "Read the press & articles": "Lire la presse et les articles",
+  "In the words": "Dans les mots",
+  "of the press": "de la presse",
+  "Read the press": "Lire la presse",
+  "Interview": "Entretien",
+  "Al Bayan (UAE)": "Al Bayan (Émirats arabes unis)",
+  "Mohamed Melehi’s ceramics in Rabat": "Les céramiques de Mohamed Melehi à Rabat",
+  "“I do not work for the taste of an imagined audience”": "« Je ne travaille pas pour le goût d’un public imaginé »",
+  "Ceramics, a living and speaking art: “the public loves quality and dislikes emptiness”": "La céramique, un art vivant et parlant : « le public aime la qualité et n’aime pas le vide »",
+  "“In my painting, Arabic calligraphy meets European geometric lines”": "« Dans ma peinture, la calligraphie arabe rencontre les lignes géométriques européennes »",
+  "Visual creation renews itself": "La création plastique se renouvelle",
+  "A review of his spring exhibition of paintings and ceramics in Rabat: an eclectic language recalling Joan Miró, and jars, minarets and boxes coloured with cobalt, iron and chromate.": "Critique de son exposition de printemps à Rabat, peintures et céramiques : un langage éclectique qui évoque Joan Miró, et des jarres, minarets et boîtes colorés au cobalt, au fer et au chromate.",
+  "Review of the exhibition at the Alliance franco-marocaine in Rabat, where European geometric figures, the forms of Moroccan mausoleums and Arabic calligraphy meet.": "Critique de l’exposition à l’Alliance franco-marocaine de Rabat, où se rencontrent figures géométriques européennes, formes des mausolées marocains et calligraphie arabe.",
+  "Announces his exhibition of ceramics at the Alliance franco-marocaine in Rabat (14–30 April), recalling shows in Morocco, France, Czechoslovakia and Egypt, where he represented Morocco at the 1998 Cairo Ceramics Biennial.": "Annonce son exposition de céramiques à l’Alliance franco-marocaine de Rabat (14 – 30 avril) et rappelle ses expositions au Maroc, en France, en Tchécoslovaquie et en Égypte, où il a représenté le Maroc à la Biennale de céramique du Caire en 1998.",
+  "Interview before the Rabat exhibition: moving between painting and ceramics, the artists of Asilah, and the bronze medal he received at the 1996 Cairo International Ceramics Biennial.": "Entretien avant l’exposition de Rabat : entre peinture et céramique, les artistes d’Asilah, et la médaille de bronze reçue à la Biennale internationale de céramique du Caire en 1996.",
+  "Interview from Rabat on his training in Casablanca and France, the Asilah festival that made him stay, and the clays and colours he works with.": "Entretien depuis Rabat sur sa formation à Casablanca et en France, le festival d’Asilah qui l’a retenu, et les argiles et couleurs avec lesquelles il travaille.",
+  "Interview in the cultural supplement: from Casablanca to Marseille and back to Asilah, ceramics in summer and painting in winter, and his preference for Moroccan materials.": "Entretien dans le supplément culturel : de Casablanca à Marseille puis le retour à Asilah, la céramique l’été et la peinture l’hiver, et sa préférence pour les matériaux marocains.",
+  "Portrait of the artist: his diploma in Marseille, teaching in Fes and Asilah, the workshops of the Palais de la culture, and 22 ceramic pieces shown at the 16th Asilah festival.": "Portrait de l’artiste : son diplôme à Marseille, l’enseignement à Fès et à Asilah, les ateliers du Palais de la culture, et 22 pièces de céramique présentées au 16e festival d’Asilah.",
+  "Interview on his early love of drawing, his studies in applied arts, Marseille and a training period in Czechoslovakia, and the sea and city of Asilah in his work.": "Entretien sur son goût précoce pour le dessin, ses études d’arts appliqués, Marseille et un stage en Tchécoslovaquie, et la mer et la ville d’Asilah dans son œuvre.",
+  "A feature on Moroccan artists: Melehi explains the techniques and uses of ceramics and calls for protecting Moroccan craft heritage.": "Un reportage sur des artistes marocains : Melehi explique les techniques et les usages de la céramique et appelle à préserver le patrimoine artisanal marocain.",
   'February 2026': 'Février 2026',
   'May 2025': 'Mai 2025',
   'March 2024': 'Mars 2024',
@@ -213,6 +242,12 @@ const UI = {
   en: {
     works: n => `${n} works`,
     pieces: n => `${n} pieces`,
+    clippings: n => `${n} clippings`,
+    undated: 'Undated',
+    read: 'Read',
+    readClipping: 'Read the clipping',
+    openOriginal: 'Open full size',
+    by: 'By',
     no: 'No.',
     view: 'View',
     viewFull: 'View full image',
@@ -230,6 +265,12 @@ const UI = {
   fr: {
     works: n => `${n} œuvres`,
     pieces: n => `${n} pièces`,
+    clippings: n => `${n} coupures`,
+    undated: 'Non daté',
+    read: 'Lire',
+    readClipping: 'Lire la coupure de presse',
+    openOriginal: 'Ouvrir en taille réelle',
+    by: 'Par',
     no: 'N°',
     view: 'Voir',
     viewFull: 'Voir l’image en grand',
@@ -251,7 +292,7 @@ const I18n = (() => {
   const KEY = 'melehi-lang';
   const ATTRS = ['placeholder', 'aria-label', 'alt', 'title'];
   // Containers that script.js renders itself (translated through t())
-  const SKIP = '#paintings-grid, #ceramics-grid, #featured-works, #lightbox-caption, #lightbox-counter, #form-status, #paintings-count, #ceramics-count, #cf-submit, script, style, svg';
+  const SKIP = '#paintings-grid, #ceramics-grid, #featured-works, #lightbox-caption, #lightbox-counter, #form-status, #paintings-count, #ceramics-count, #press-grid, #home-press, #press-count, #cf-submit, script, style, svg';
   const originalText = new WeakMap();
   let lang = 'en';
 

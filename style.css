@@ -621,11 +621,49 @@ button { font: inherit; color: inherit; }
 .timeline-year { font-family: var(--serif); font-size: 1.25rem; color: var(--brass); line-height: 1.4; }
 .timeline-venues { font-size: 0.98rem; line-height: 1.75; color: var(--stone); }
 .timeline-venues strong { font-weight: 400; color: var(--ink); }
-.press-section { margin-top: clamp(4rem, 8vw, 7rem); }
+.bio-press-link { margin-top: clamp(4rem, 8vw, 7rem); padding-top: 2.5rem; border-top: 1px solid var(--line); text-align: right; }
 .press-item { color: inherit; text-decoration: none; }
 .press-item cite { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--ink-2); }
 .press-read { display: block; margin-top: 0.4rem; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass); }
 .press-item:hover .press-read, .press-item:focus-visible .press-read { text-decoration: underline; text-underline-offset: 0.3em; }
+
+/* ---------- Press ---------- */
+.page-hero--press { background-image: url('assets/web/large/press/1994-le-matin-un-don-insaisissable.jpg'); background-position: center 30%; }
+.page-hero--press::before { background: linear-gradient(to top, rgba(15,13,10,0.94) 0%, rgba(15,13,10,0.7) 50%, rgba(15,13,10,0.6) 100%); }
+.press-body { width: min(1360px, 100% - 2 * var(--gutter)); margin: 0 auto; padding: clamp(3.5rem, 7vw, 6rem) 0 var(--section); }
+.press-archive { margin-top: var(--section); }
+.press-archive-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem 2rem; flex-wrap: wrap; padding-bottom: 2rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); border-bottom: 1px solid var(--ink); }
+.press-archive-head h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 3.2vw, 2.8rem); line-height: 1.1; color: var(--ink); }
+.press-archive-head p { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--stone); }
+.press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 clamp(1.5rem, 3.2vw, 3.75rem); align-items: start; }
+.press-card { margin: 0 0 clamp(3rem, 5vw, 4.5rem); }
+.press-thumb { position: relative; display: block; width: 100%; padding: 0; border: none; background: var(--sand); cursor: zoom-in; overflow: hidden; }
+.press-thumb img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; filter: sepia(0.15); transition: transform 1.4s var(--ease-out), filter 0.6s; }
+.press-thumb::after { content: ''; position: absolute; inset: 0; background: rgba(15,13,10,0); transition: background 0.6s; }
+.press-thumb:hover img { transform: scale(1.03); filter: none; }
+.press-thumb:hover::after { background: rgba(15,13,10,0.15); }
+.press-thumb:hover .art-view, .press-thumb:focus-visible .art-view { opacity: 1; transform: scale(1); }
+.press-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1.1rem 0 0.8rem; border-bottom: 1px solid var(--line); margin-bottom: 1rem; }
+.press-date { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--brass); white-space: nowrap; }
+.press-outlet { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); text-align: right; }
+.press-title { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; line-height: 1.3; color: var(--ink); }
+.press-title[dir="rtl"] { font-family: 'Geeza Pro', 'Noto Naskh Arabic', 'Arial', sans-serif; font-weight: 400; font-size: 1.15rem; line-height: 1.7; }
+.press-translation { margin-top: 0.4rem; font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.45; color: var(--stone); }
+.press-summary { margin-top: 0.9rem; font-size: 0.92rem; line-height: 1.7; color: var(--ink-2); }
+.press-author { margin-top: 0.75rem; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); }
+
+.home-press { border-top: 1px solid var(--line); }
+.home-press-quote { max-width: 54rem; margin: 0 0 clamp(3rem, 6vw, 5rem); }
+.home-press-quote p { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.7rem, 3.2vw, 2.7rem); line-height: 1.3; color: var(--ink); }
+.home-press-quote cite { display: block; margin-top: 1.25rem; font-style: normal; font-size: 0.64rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--brass); }
+.home-press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3.2vw, 3.75rem); }
+.home-press-grid .press-card { margin: 0; }
+.home-press-outlets { margin-top: clamp(3rem, 6vw, 5rem); padding-top: 2rem; border-top: 1px solid var(--line); font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--stone); text-align: center; line-height: 2.2; }
+
+.lightbox.is-press .lb-caption { flex-direction: column; gap: 0.35rem; }
+.lightbox.is-press .lb-caption .art-main[dir="rtl"] { font-family: 'Geeza Pro', 'Noto Naskh Arabic', 'Arial', sans-serif; font-style: normal; font-size: 1.1rem; }
+.lb-original { font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; border-bottom: 1px solid var(--line-l); padding-bottom: 0.2rem; align-self: flex-start; }
+.lb-original:hover { color: #fff; border-color: #fff; }
 
 /* ---------- Contact ---------- */
 .contact-page { display: grid; grid-template-columns: 5fr 6fr; min-height: 100vh; min-height: 100svh; }
@@ -760,8 +798,10 @@ body.no-scroll { overflow: hidden; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1180px) {
-  .nav-links { gap: 1.8rem; }
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { letter-spacing: 0.2em; }
   .art-grid { column-count: 2; }
+  .press-grid { grid-template-columns: repeat(2, 1fr); }
   .featured-grid { grid-template-columns: repeat(2, 1fr); }
   .featured-grid .art-item:nth-child(n) { margin-top: 0; }
   .featured-grid .art-item:nth-child(2n) { margin-top: clamp(2rem, 7vw, 6rem); }
@@ -828,6 +868,9 @@ body.no-scroll { overflow: hidden; }
   .stats > div, .stats > div + div { padding: 1.5rem 0; border-left: none; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.25rem; }
   .stats dt { margin-bottom: 0; min-width: 5.5rem; }
   .art-grid { column-count: 1; }
+  .press-grid { grid-template-columns: 1fr; }
+  .home-press-grid { grid-template-columns: 1fr; }
+  .home-press-grid .press-card:nth-child(n+2) { display: none; }
   .featured-grid { grid-template-columns: 1fr; }
   .featured-grid .art-item:nth-child(n) { margin-top: 0; }
   .featured-grid .art-item + .art-item { margin-top: 2.5rem; }

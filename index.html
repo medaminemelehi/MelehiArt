@@ -12,11 +12,17 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://melehiart.com/">
 <meta property="og:site_name" content="Melehi Art">
-<meta property="og:image" content="https://melehiart.com/og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://melehiart.com/og-image.jpg?v=2">
+<meta property="og:image:secure_url" content="https://melehiart.com/og-image.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Portrait of Mohamed Amine Melehi beside one of his paintings">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mohamed Amine Melehi — Painter &amp; Ceramist">
+<meta name="twitter:description" content="Paintings and ceramics by Mohamed Amine Melehi, Asilah, Morocco.">
+<meta name="twitter:image" content="https://melehiart.com/og-image.jpg?v=2">
+<meta name="thumbnail" content="https://melehiart.com/assets/share/portrait-1x1.jpg">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -47,7 +53,11 @@
    },
    "alumniOf": "École d'Arts et d'Architecture de Marseille",
    "url": "https://melehiart.com/",
-   "image": "https://melehiart.com/og-image.jpg",
+   "image": [
+    "https://melehiart.com/assets/share/portrait-1x1.jpg",
+    "https://melehiart.com/assets/share/portrait-4x3.jpg",
+    "https://melehiart.com/assets/share/portrait-16x9.jpg"
+   ],
    "sameAs": [
     "https://www.instagram.com/mohamedaminemelehi/",
     "https://www.facebook.com/Medamine.melehi/"
@@ -207,6 +217,21 @@
      "image": "https://melehiart.com/assets/press/undated-al-mithaq-al-watani.jpg"
     }
    ]
+  },
+  {
+   "@type": "ProfilePage",
+   "@id": "https://melehiart.com/#profile",
+   "url": "https://melehiart.com/",
+   "name": "Mohamed Amine Melehi — Painter & Ceramist",
+   "mainEntity": {"@id": "https://melehiart.com/#artist"},
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://melehiart.com/assets/share/portrait-1x1.jpg",
+    "width": 1200,
+    "height": 1200,
+    "caption": "Mohamed Amine Melehi"
+   },
+   "isPartOf": {"@id": "https://melehiart.com/#website"}
   },
   {
    "@type": "WebSite",

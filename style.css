@@ -887,3 +887,10 @@ body.no-scroll { overflow: hidden; }
   .lb-nav { display: none; }
   .lb-close { top: 1rem; right: 1rem; width: 46px; height: 46px; }
 }
+
+/* Arabic name, shown under the Latin name */
+.name-ar { font-family: 'Amiri', 'Geeza Pro', 'Noto Naskh Arabic', serif; font-weight: 400; line-height: 1.5; letter-spacing: 0; color: var(--brass-l); }
+.hero .name-ar { font-size: clamp(1.7rem, 3vw, 2.6rem); margin: -0.2rem 0 1.4rem; text-align: left; color: #f1dfb8; text-shadow: 0 2px 18px rgba(0,0,0,0.55); }
+.bio-name-ar { font-size: clamp(1.5rem, 2.6vw, 2.2rem); margin: -1.2rem 0 2rem; text-align: left; }
+.footer-name { font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+.footer-name [lang="ar"] { font-family: 'Amiri', 'Geeza Pro', serif; }

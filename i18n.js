@@ -13,9 +13,9 @@
 
 const FR = {
   // Meta
-  'Mohamed Amine Melehi — Painter & Ceramist · Melehi Art': 'Mohamed Amine Melehi — Peintre & Céramiste · Melehi Art',
-  'The official portfolio of Mohamed Amine Melehi, Moroccan painter and ceramist born in Asilah in 1953. Paintings, ceramics, biography and inquiries.':
-    'Le portfolio officiel de Mohamed Amine Melehi, peintre et céramiste marocain né à Asilah en 1953. Peintures, céramiques, biographie et contact.',
+  'Mohammed Amine Melehi · محمد الأمين المليحي — Painter & Ceramist': 'Mohammed Amine Melehi · محمد الأمين المليحي — Peintre & Céramiste',
+  'The official portfolio of Mohammed Amine Melehi, Moroccan painter and ceramist born in Asilah in 1953. Paintings, ceramics, biography and inquiries.':
+    'Le portfolio officiel de Mohammed Amine Melehi, peintre et céramiste marocain né à Asilah en 1953. Peintures, céramiques, biographie et contact.',
 
   // Nav
   'Melehi Art — Home': 'Melehi Art — Accueil',
@@ -51,10 +51,10 @@ const FR = {
   'Collections': 'Collections',
   'Two languages,': 'Deux langages,',
   'one vision': 'une seule vision',
-  'Paintings by Mohamed Amine Melehi': 'Peintures de Mohamed Amine Melehi',
+  'Paintings by Mohammed Amine Melehi': 'Peintures de Mohammed Amine Melehi',
   'Acrylic on canvas · 1996 – 2022': 'Acrylique sur toile · 1996 – 2022',
   'Explore the collection': 'Découvrir la collection',
-  'Ceramics by Mohamed Amine Melehi': 'Céramiques de Mohamed Amine Melehi',
+  'Ceramics by Mohammed Amine Melehi': 'Céramiques de Mohammed Amine Melehi',
   'Surrealistic forms · Geometric elegance': 'Formes surréalistes · Élégance géométrique',
 
   // Home — selected works
@@ -70,12 +70,12 @@ const FR = {
   'Cairo': 'Le Caire',
 
   // Home — artist
-  'Portrait of Mohamed Amine Melehi': 'Portrait de Mohamed Amine Melehi',
+  'Portrait of Mohammed Amine Melehi': 'Portrait de Mohammed Amine Melehi',
   'The Artist': 'L’artiste',
   'Born in Asilah,': 'Né à Asilah,',
   'shaped by Morocco': 'façonné par le Maroc',
-  'Born in 1953 in the picturesque coastal town of Asilah, Mohamed Amine Melehi dedicated decades to the plastic arts — teaching, creating, and exhibiting across Morocco and around the globe.':
-    'Né en 1953 dans la pittoresque ville côtière d’Asilah, Mohamed Amine Melehi a consacré des décennies aux arts plastiques — enseignant, créant et exposant à travers le Maroc et le monde.',
+  'Born in 1953 in the picturesque coastal town of Asilah, Mohammed Amine Melehi dedicated decades to the plastic arts — teaching, creating, and exhibiting across Morocco and around the globe.':
+    'Né en 1953 dans la pittoresque ville côtière d’Asilah, Mohammed Amine Melehi a consacré des décennies aux arts plastiques — enseignant, créant et exposant à travers le Maroc et le monde.',
   'He studied at the prestigious School of Arts and Architecture of Marseille, and returned home to leave a lasting mark on Moroccan cultural life — as Professor of Plastic Arts in Asilah and head of the Ceramics and Sculpture Workshop of the International Cultural Moussem.':
     'Formé à la prestigieuse École d’Arts et d’Architecture de Marseille, il est revenu au pays pour marquer durablement la vie culturelle marocaine — comme professeur d’arts plastiques à Asilah et responsable de l’atelier de céramique et de sculpture du Moussem culturel international.',
   'Full Biography': 'Biographie complète',
@@ -84,8 +84,8 @@ const FR = {
   'Published Work': 'Publication',
   '101 Moroccan': '101 contes',
   'Folk Tales': 'populaires du Maroc',
-  'One hundred and one traditional Moroccan folk tales, lovingly collected and arranged in Asilah by Mohamed Amine Melehi.':
-    'Cent un contes populaires marocains, recueillis et mis en forme avec soin à Asilah par Mohamed Amine Melehi.',
+  'One hundred and one traditional Moroccan folk tales, lovingly collected and arranged in Asilah by Mohammed Amine Melehi.':
+    'Cent un contes populaires marocains, recueillis et mis en forme avec soin à Asilah par Mohammed Amine Melehi.',
   'A treasure trove of coastal and Moroccan heritage, bridging generations through the art of storytelling.':
     'Un trésor du patrimoine côtier et marocain, qui relie les générations par l’art du conte.',
   'Ask about the book': 'Se renseigner sur le livre',
@@ -149,7 +149,7 @@ const FR = {
   "Read the press": "Lire la presse",
   "Interview": "Entretien",
   "Al Bayan (UAE)": "Al Bayan (Émirats arabes unis)",
-  "Mohamed Amine Melehi’s ceramics in Rabat": "Les céramiques de Mohamed Amine Melehi à Rabat",
+  "Mohammed Amine Melehi’s ceramics in Rabat": "Les céramiques de Mohammed Amine Melehi à Rabat",
   "“I do not work for the taste of an imagined audience”": "« Je ne travaille pas pour le goût d’un public imaginé »",
   "Ceramics, a living and speaking art: “the public loves quality and dislikes emptiness”": "La céramique, un art vivant et parlant : « le public aime la qualité et n’aime pas le vide »",
   "“In my painting, Arabic calligraphy meets European geometric lines”": "« Dans ma peinture, la calligraphie arabe rencontre les lignes géométriques européennes »",
@@ -204,8 +204,8 @@ const FR = {
   'Get in Touch': 'Prendre contact',
   'Let’s': 'Restons',
   'connect': 'en contact',
-  'Whether you’re interested in acquiring a piece, organizing an exhibition, or simply wish to learn more about the work of Mohamed Amine Melehi, reach out.':
-    'Que vous souhaitiez acquérir une œuvre, organiser une exposition ou simplement en savoir plus sur le travail de Mohamed Amine Melehi, écrivez-nous.',
+  'Whether you’re interested in acquiring a piece, organizing an exhibition, or simply wish to learn more about the work of Mohammed Amine Melehi, reach out.':
+    'Que vous souhaitiez acquérir une œuvre, organiser une exposition ou simplement en savoir plus sur le travail de Mohammed Amine Melehi, écrivez-nous.',
   'Email': 'E-mail',
   'Telephone': 'Téléphone',
   'Studio': 'Atelier',
@@ -227,7 +227,7 @@ const FR = {
   // Footer
   'Painter & ceramist · Asilah, Morocco': 'Peintre & céramiste · Asilah, Maroc',
   'Explore': 'Explorer',
-  '© 2026 Mohamed Amine Melehi · All rights reserved': '© 2026 Mohamed Amine Melehi · Tous droits réservés',
+  '© 2026 Mohammed Amine Melehi · All rights reserved': '© 2026 Mohammed Amine Melehi · Tous droits réservés',
   'Back to top': 'Haut de page',
 
   // Lightbox
@@ -251,8 +251,8 @@ const UI = {
     no: 'No.',
     view: 'View',
     viewFull: 'View full image',
-    paintingBy: 'Painting by Mohamed Amine Melehi',
-    ceramicBy: 'Ceramic by Mohamed Amine Melehi',
+    paintingBy: 'Painting by Mohammed Amine Melehi',
+    ceramicBy: 'Ceramic by Mohammed Amine Melehi',
     formMissing: 'Please fill in your name and message.',
     formEmail: 'Please enter a valid email address.',
     formWait: 'Please wait a minute before sending another message.',
@@ -274,8 +274,8 @@ const UI = {
     no: 'N°',
     view: 'Voir',
     viewFull: 'Voir l’image en grand',
-    paintingBy: 'Peinture de Mohamed Amine Melehi',
-    ceramicBy: 'Céramique de Mohamed Amine Melehi',
+    paintingBy: 'Peinture de Mohammed Amine Melehi',
+    ceramicBy: 'Céramique de Mohammed Amine Melehi',
     formMissing: 'Merci d’indiquer votre prénom et votre message.',
     formEmail: 'Merci d’indiquer une adresse e-mail valide.',
     formWait: 'Merci de patienter une minute avant d’envoyer un autre message.',

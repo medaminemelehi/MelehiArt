@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<!-- Umami analytics (cookie-free). Page views are sent from script.js because the site uses #hash pages. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="0ac8881d-3fd3-467b-938b-f85df614126c" data-auto-track="false" data-domains="melehiart.com,www.melehiart.com"></script>
 <script>
   // Show the intro loader only once per visit
   try { if (sessionStorage.getItem('melehi-seen')) document.documentElement.classList.add('no-loader'); } catch (e) {}
@@ -69,7 +71,7 @@
         <span class="ln"><span><em>Amine</em> Melehi</span></span>
       </h1>
       <p class="hero-sub hero-fade">Painter, ceramist, and keeper of stories — a lifetime of art rooted in Moroccan earth.</p>
-      <a class="btn btn--light hero-fade" href="#biography" data-page="biography"><span>Discover the Artist</span></a>
+      <a data-track="Hero: Discover the Artist" class="btn btn--light hero-fade" href="#biography" data-page="biography"><span>Discover the Artist</span></a>
     </div>
     <div class="hero-meta hero-fade" aria-hidden="true">
       <span>Est. 1953</span>
@@ -100,7 +102,7 @@
         <h2 class="display">Two languages,<br><em>one vision</em></h2>
       </div>
       <div class="collection-grid">
-        <a class="collection-card reveal" href="#paintings" data-page="paintings">
+        <a data-track="Home: Paintings card" class="collection-card reveal" href="#paintings" data-page="paintings">
           <span class="collection-media"><img id="home-paintings-card" alt="Paintings by Mohamed Amine Melehi" loading="lazy"></span>
           <span class="collection-body">
             <span class="collection-no">I</span>
@@ -109,7 +111,7 @@
             <span class="link-arrow">Explore the collection</span>
           </span>
         </a>
-        <a class="collection-card collection-card--offset reveal" href="#ceramics" data-page="ceramics">
+        <a data-track="Home: Ceramics card" class="collection-card collection-card--offset reveal" href="#ceramics" data-page="ceramics">
           <span class="collection-media"><img id="home-ceramics-card" alt="Ceramics by Mohamed Amine Melehi" loading="lazy"></span>
           <span class="collection-body">
             <span class="collection-no">II</span>
@@ -130,7 +132,7 @@
           <p class="eyebrow eyebrow--light"><b>03</b> Selected Works</p>
           <h2 class="display">Colour as<br><em>a living geometry</em></h2>
         </div>
-        <a class="link-arrow link-arrow--light" href="#paintings" data-page="paintings">View all paintings</a>
+        <a data-track="Home: View all paintings" class="link-arrow link-arrow--light" href="#paintings" data-page="paintings">View all paintings</a>
       </div>
       <div class="featured-grid" id="featured-works"></div>
     </div>
@@ -156,7 +158,7 @@
         <h2 class="display">Born in Asilah,<br><em>shaped by Morocco</em></h2>
         <p class="body-lg">Born in 1953 in the picturesque coastal town of Asilah, Mohamed Amine Melehi dedicated decades to the plastic arts — teaching, creating, and exhibiting across Morocco and around the globe.</p>
         <p class="body">He studied at the prestigious School of Arts and Architecture of Marseille, and returned home to leave a lasting mark on Moroccan cultural life — as Professor of Plastic Arts in Asilah and head of the Ceramics and Sculpture Workshop of the International Cultural Moussem.</p>
-        <a class="btn btn--dark" href="#biography" data-page="biography"><span>Full Biography</span></a>
+        <a data-track="Home: Full Biography" class="btn btn--dark" href="#biography" data-page="biography"><span>Full Biography</span></a>
       </div>
     </div>
   </section>
@@ -169,7 +171,7 @@
         <h2 class="display">101 Moroccan<br><em>Folk Tales</em></h2>
         <p class="body-lg">One hundred and one traditional Moroccan folk tales, lovingly collected and arranged in Asilah by Mohamed Amine Melehi.</p>
         <p class="body">A treasure trove of coastal and Moroccan heritage, bridging generations through the art of storytelling.</p>
-        <a class="link-arrow" href="#contact" data-page="contact">Ask about the book</a>
+        <a data-track="Home: Ask about the book" class="link-arrow" href="#contact" data-page="contact">Ask about the book</a>
       </div>
       <div class="book-cover reveal">
         <img id="home-book-poster" alt="101 Contes Populaires du Maroc — book cover" loading="lazy">
@@ -183,7 +185,7 @@
       <p class="eyebrow eyebrow--light eyebrow--center">Acquisitions &amp; Commissions</p>
       <h2 class="display">Bring a Melehi<br><em>into your collection</em></h2>
       <p>For acquisitions, exhibitions or commissions, the artist welcomes your inquiry.</p>
-      <a class="btn btn--light" href="#contact" data-page="contact"><span>Make an Inquiry</span></a>
+      <a data-track="Home: Make an Inquiry" class="btn btn--light" href="#contact" data-page="contact"><span>Make an Inquiry</span></a>
     </div>
   </section>
 </div>
@@ -202,7 +204,7 @@
     <span>Select a work to view it in full</span>
   </div>
   <div class="wrap art-grid" id="paintings-grid"></div>
-  <a class="next-page" href="#ceramics" data-page="ceramics">
+  <a data-track="Paintings: Next to Ceramics" class="next-page" href="#ceramics" data-page="ceramics">
     <span class="eyebrow">Next collection</span>
     <span class="next-page-title">Ceramics <i>→</i></span>
   </a>
@@ -222,7 +224,7 @@
     <span>Select a piece to view it in full</span>
   </div>
   <div class="wrap art-grid" id="ceramics-grid"></div>
-  <a class="next-page" href="#biography" data-page="biography">
+  <a data-track="Ceramics: Next to Biography" class="next-page" href="#biography" data-page="biography">
     <span class="eyebrow">Meet the artist</span>
     <span class="next-page-title">Biography <i>→</i></span>
   </a>

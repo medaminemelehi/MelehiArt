@@ -80,8 +80,38 @@ const PAGES = ['home', 'paintings', 'ceramics', 'biography', 'contact'];
 const DARK_TOP = ['home', 'paintings', 'ceramics', 'biography'];
 let currentPage = 'home';
 
+/* ---------------- Analytics (Umami) ----------------
+   Page views are sent by hand because pages are #hash routes (they show up as
+   /home, /paintings, ...). Fails silently if Umami is blocked or not loaded. */
+const analytics = {
+  send(fn) {
+    if (window.umami) return fn(window.umami);
+    if (document.readyState !== 'complete')
+      window.addEventListener('load', () => window.umami && fn(window.umami), { once: true });
+  },
+  page(id) {
+    this.send(u => u.track(p => ({ ...p, url: '/' + id, title: document.title })));
+  },
+  event(name, data) {
+    this.send(u => u.track(name, { ...data, page: currentPage, lang: window.I18n ? I18n.lang : 'en' }));
+  }
+};
+
+// Click tracking: buttons tagged with data-track, social links, email links
+document.addEventListener('click', e => {
+  const el = e.target.closest('a, button');
+  if (!el) return;
+  const where = el.closest('footer') ? 'footer' : currentPage;
+  if (el.dataset.track) analytics.event('Button click', { button: el.dataset.track });
+  else if (el.classList.contains('social-btn')) analytics.event(el.title + ' click', { where });
+  else if ((el.getAttribute('href') || '').startsWith('mailto:')) analytics.event('Email click', { where });
+  else if (el.dataset.lang) analytics.event('Language switch', { to: el.dataset.lang });
+  else if (el.closest('.nav-links') && el.dataset.page) analytics.event('Menu click', { to: el.dataset.page });
+}, true);
+
 function showPage(id, { push = true } = {}) {
   if (!PAGES.includes(id)) id = 'home';
+  if (id !== currentPage || !showPage.tracked) { showPage.tracked = true; analytics.page(id); }
   currentPage = id;
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
@@ -143,9 +173,11 @@ function initContactForm() {
       localStorage.setItem('lastSend', Date.now());
       form.reset();
       say(t('sent'), 'ok');
+      analytics.event('Contact form sent');
     } catch (err) {
       console.error(err);
       say(t('failed'), 'error');
+      analytics.event('Contact form failed');
     } finally {
       btn.disabled = false; btn.innerHTML = `<span>${t('send')}</span>`;
     }
@@ -300,6 +332,11 @@ const lightbox = {
     this.items = items;
     this.lastFocus = trigger;
     this.show(index);
+    const item = items[index];
+    analytics.event('View artwork', {
+      artwork: `${item.id} (${item.year || ''}, ${item.dimensions || ''})`,
+      type: item.id.split('-')[0]
+    });
     this.el.classList.add('open');
     this.el.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll');

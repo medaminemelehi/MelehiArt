@@ -133,6 +133,13 @@ const FR = {
   'Diploma in Applied Arts, Ceramics Section — Alkhansa High School, Casablanca':
     'Diplôme d’Arts Appliqués, section Céramique — Lycée Alkhansa, Casablanca',
   'Art Exhibitions': 'Expositions',
+  'In the Press': 'Dans la presse',
+  'February 2026': 'Février 2026',
+  'May 2025': 'Mai 2025',
+  'March 2024': 'Mars 2024',
+  'March 2023': 'Mars 2023',
+  'Read article ↗': 'Lire l’article ↗',
+  '(UAE) —': '(Émirats arabes unis) —',
   'Centre Hassan II des Rencontres Internationales — Cultural Moussems of':
     'Centre Hassan II des Rencontres Internationales — Moussems culturels d’',
   'Palais des Arts de Tanger — In collaboration with': 'Palais des Arts de Tanger — En collaboration avec le',

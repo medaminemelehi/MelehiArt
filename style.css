@@ -621,6 +621,11 @@ button { font: inherit; color: inherit; }
 .timeline-year { font-family: var(--serif); font-size: 1.25rem; color: var(--brass); line-height: 1.4; }
 .timeline-venues { font-size: 0.98rem; line-height: 1.75; color: var(--stone); }
 .timeline-venues strong { font-weight: 400; color: var(--ink); }
+.press-section { margin-top: clamp(4rem, 8vw, 7rem); }
+.press-item { color: inherit; text-decoration: none; }
+.press-item cite { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--ink-2); }
+.press-read { display: block; margin-top: 0.4rem; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass); }
+.press-item:hover .press-read, .press-item:focus-visible .press-read { text-decoration: underline; text-underline-offset: 0.3em; }
 
 /* ---------- Contact ---------- */
 .contact-page { display: grid; grid-template-columns: 5fr 6fr; min-height: 100vh; min-height: 100svh; }

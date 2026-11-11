@@ -21,7 +21,7 @@ const siteData = {
   "paintings": [
     { "id": "painting-20", "image": "assets/paintings/IMG_1583 2.jpg", "technic": "Acrylic on canvas", "year": "2019", "dimensions": "120 x 110 cm" },
     { "id": "painting-4", "image": "assets/paintings/IMG_1172 2.jpg", "technic": "Acrylic on canvas", "year": "2015", "dimensions": "120 x 110 cm" },
-    { "id": "painting-8", "image": "assets/paintings/IMG_1189 2.jpg", "technic": "Acrylic on canvas", "year": "2010", "dimensions": "93 x 56 cm" },
+    { "id": "painting-8", "image": "assets/paintings/IMG_1189 2.jpg", "technic": "Acrylic on paper", "year": "2010", "dimensions": "93 x 56 cm" },
     { "id": "painting-9", "image": "assets/paintings/IMG_1191 2.jpg", "technic": "Acrylic on canvas", "year": "2012", "dimensions": "92 x 56 cm" },
     { "id": "painting-22", "image": "assets/paintings/catalogue_p06_x77.jpg", "technic": "Acrylic on canvas", "year": "2019", "dimensions": "140 x 120 cm" },
     { "id": "painting-1", "image": "assets/paintings/IMG_1034 2.jpg", "technic": "Acrylic on canvas", "year": "2016", "dimensions": "120 x 110 cm" },
@@ -39,13 +39,13 @@ const siteData = {
     { "id": "painting-27", "image": "assets/paintings/catalogue_p12_x97.jpg", "technic": "Acrylic on canvas", "year": "2022", "dimensions": "100 x 100 cm" },
     { "id": "painting-18", "image": "assets/paintings/IMG_1578 2.jpg", "technic": "Acrylic on canvas", "year": "2022", "dimensions": "92 x 72 cm" },
     { "id": "painting-6", "image": "assets/paintings/IMG_1183 2.jpg", "technic": "Acrylic on canvas", "year": "2022", "dimensions": "93 x 73 cm" },
-    { "id": "painting-7", "image": "assets/paintings/IMG_1187 2.jpg", "technic": "Acrylic on canvas", "year": "2005", "dimensions": "92 x 54 cm" },
-    { "id": "painting-10", "image": "assets/paintings/IMG_1194 2.jpg", "technic": "Acrylic on canvas", "year": "2013", "dimensions": "92 x 56 cm" },
-    { "id": "painting-19", "image": "assets/paintings/IMG_1582 2.jpg", "technic": "Acrylic on canvas", "year": "1996", "dimensions": "92 x 57 cm" },
-    { "id": "painting-3", "image": "assets/paintings/IMG_1049 2.jpg", "technic": "Acrylic on canvas", "year": "2014", "dimensions": "92 x 72 cm" },
+    { "id": "painting-7", "image": "assets/paintings/IMG_1187 2.jpg", "technic": "Acrylic on paper", "year": "1997", "dimensions": "92 x 54 cm" },
+    { "id": "painting-10", "image": "assets/paintings/IMG_1194 2.jpg", "technic": "Acrylic on paper", "year": "2013", "dimensions": "92 x 56 cm" },
+    { "id": "painting-19", "image": "assets/paintings/IMG_1582 2.jpg", "technic": "Acrylic on paper", "year": "2011", "dimensions": "92 x 57 cm" },
+    { "id": "painting-3", "image": "assets/paintings/IMG_1049 2.jpg", "technic": "Acrylic on paper", "year": "2014", "dimensions": "92 x 72 cm" },
     { "id": "painting-15", "image": "assets/paintings/IMG_1573 2.JPG", "technic": "Acrylic on canvas", "year": "2019", "dimensions": "100 x 100 cm" },
     { "id": "painting-16", "image": "assets/paintings/IMG_1576 2.JPG", "technic": "Acrylic on canvas", "year": "2018", "dimensions": "90 x 71 cm" },
-    { "id": "painting-12", "image": "assets/paintings/IMG_1207 2.jpg", "technic": "Acrylic on canvas", "year": "2014", "dimensions": "100 x 120 cm" }
+    { "id": "painting-12", "image": "assets/paintings/IMG_1207 2.jpg", "technic": "Acrylic on paper", "year": "2014", "dimensions": "100 x 120 cm" }
   ],
   "ceramics": [
     { "id": "ceramic-1", "image": "assets/ceramics/cutout/IMG_2811.webp", "year": "1990", "dimensions": "41 x 39 x 12.5 cm" },

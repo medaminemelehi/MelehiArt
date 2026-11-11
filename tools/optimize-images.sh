@@ -4,7 +4,7 @@
 #   assets/web/large/...  ~2200px  — used in the full-screen viewer
 # Originals are never modified. Re-run after adding new images.
 cd "${0:A:h}/.."
-for dir in paintings ceramics home press; do
+for dir in paintings ceramics home press studio; do
   for f in assets/$dir/*.(jpg|JPG|jpeg|png)(N); do
     [[ ${f:t} == *_web.* ]] && continue; name=${f:t}; [[ $name == *.png ]] && name=${name:r}.jpg
     for size in thumb large; do

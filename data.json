@@ -36,7 +36,7 @@
     {
       "id": "painting-8",
       "image": "assets/paintings/IMG_1189 2.jpg",
-      "technic": "Acrylic on canvas",
+      "technic": "Acrylic on paper",
       "year": "2010",
       "dimensions": "93 x 56 cm"
     },
@@ -162,28 +162,28 @@
     {
       "id": "painting-7",
       "image": "assets/paintings/IMG_1187 2.jpg",
-      "technic": "Acrylic on canvas",
-      "year": "2005",
+      "technic": "Acrylic on paper",
+      "year": "1997",
       "dimensions": "92 x 54 cm"
     },
     {
       "id": "painting-10",
       "image": "assets/paintings/IMG_1194 2.jpg",
-      "technic": "Acrylic on canvas",
+      "technic": "Acrylic on paper",
       "year": "2013",
       "dimensions": "92 x 56 cm"
     },
     {
       "id": "painting-19",
       "image": "assets/paintings/IMG_1582 2.jpg",
-      "technic": "Acrylic on canvas",
-      "year": "1996",
+      "technic": "Acrylic on paper",
+      "year": "2011",
       "dimensions": "92 x 57 cm"
     },
     {
       "id": "painting-3",
       "image": "assets/paintings/IMG_1049 2.jpg",
-      "technic": "Acrylic on canvas",
+      "technic": "Acrylic on paper",
       "year": "2014",
       "dimensions": "92 x 72 cm"
     },
@@ -204,7 +204,7 @@
     {
       "id": "painting-12",
       "image": "assets/paintings/IMG_1207 2.jpg",
-      "technic": "Acrylic on canvas",
+      "technic": "Acrylic on paper",
       "year": "2014",
       "dimensions": "100 x 120 cm"
     }

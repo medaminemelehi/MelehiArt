@@ -52,7 +52,7 @@ const FR = {
   'Two languages,': 'Deux langages,',
   'one vision': 'une seule vision',
   'Paintings by Mohammed Amine Melehi': 'Peintures de Mohammed Amine Melehi',
-  'Acrylic on canvas · 1996 – 2022': 'Acrylique sur toile · 1996 – 2022',
+  'Acrylic on canvas & paper · 1996 – 2022': 'Acrylique sur toile & papier · 1996 – 2022',
   'Explore the collection': 'Découvrir la collection',
   'Ceramics by Mohammed Amine Melehi': 'Céramiques de Mohammed Amine Melehi',
   'Surrealistic forms · Geometric elegance': 'Formes surréalistes · Élégance géométrique',
@@ -103,7 +103,24 @@ const FR = {
   'Collection I ·': 'Collection I ·',
   'Through essential forms and meaningful motifs, the canvas becomes a space of symbols and dialogue — structure meeting spontaneity.':
     'Par des formes essentielles et des motifs chargés de sens, la toile devient un espace de symboles et de dialogue — la structure rencontre la spontanéité.',
+  // Ceramics page — In the studio
+  'In the Studio': 'Dans l’atelier',
+  'Earth and fire,': 'La terre et le feu,',
+  'shaped by hand': 'façonnés à la main',
+  'In the studio · Asilah': 'Dans l’atelier · Asilah',
+  'Clay has been at the heart of Mohammed Amine Melehi’s work for more than forty years. He trained in the ceramics section of the applied arts school in Casablanca, then in Marseille, and brought that craft home to Asilah.':
+    'Depuis plus de quarante ans, l’argile est au cœur de l’œuvre de Mohammed Amine Melehi. Formé à la section céramique de l’école des arts appliqués de Casablanca, puis à Marseille, il a ramené ce savoir-faire à Asilah.',
+  'On the shelves of his studio, jars, minarets, flowers and spheres wait for the kiln. He prefers Moroccan clays and colours his pieces with cobalt, iron and chromate. In his forms, the domes of mausoleums meet Arabic calligraphy and the clean lines of geometry.':
+    'Sur les étagères de son atelier, jarres, minarets, fleurs et sphères attendent le four. Il privilégie les argiles marocaines et colore ses pièces au cobalt, au fer et au chromate. Dans ses formes, les coupoles des mausolées rencontrent la calligraphie arabe et les lignes nettes de la géométrie.',
+  'The press has called his ceramics “a living and speaking art”, and in 1999 Libération named him “a great virtuoso of ceramics”. He works with clay in summer and paints in winter, two seasons of a single practice.':
+    'La presse a qualifié sa céramique d’« art vivant et parlant », et Libération l’a salué en 1999 comme « un grand virtuose de la céramique ». Il travaille l’argile l’été et peint l’hiver : deux saisons d’une même pratique.',
+  'For nearly two decades he led the ceramics and sculpture workshop of the Asilah Festival. His pieces have travelled to Karlovy Vary and to Cairo, where he received a bronze medal at the 1996 International Ceramics Biennial.':
+    'Pendant près de vingt ans, il a dirigé l’atelier de céramique et de sculpture du Festival d’Asilah. Ses pièces ont voyagé jusqu’à Karlovy Vary et au Caire, où il a reçu une médaille de bronze à la Biennale internationale de la céramique en 1996.',
+  'Drawn from Le Matin du Sahara, Libération, Al Maghrib and Al Mithaq Al Watani, 1994 – 1999': 'D’après Le Matin du Sahara, Libération, Al Maghrib et Al Mithaq Al Watani, 1994 – 1999',
+  'Mohammed Amine Melehi shaping a ceramic piece in his studio in Asilah': 'Mohammed Amine Melehi façonnant une céramique dans son atelier à Asilah',
   'Acrylic on canvas': 'Acrylique sur toile',
+  'Acrylic on paper': 'Acrylique sur papier',
+  'Acrylic on canvas & paper': 'Acrylique sur toile & papier',
   'Select a work to view it in full': 'Sélectionnez une œuvre pour la voir en grand',
   'Next collection': 'Collection suivante',
   'From surrealistic forms to geometric elegance, each piece embodies a unique blend of Moroccan tradition and contemporary innovation.':

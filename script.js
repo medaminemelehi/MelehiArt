@@ -29,7 +29,7 @@ const siteData = {
     { "id": "painting-23", "image": "assets/paintings/catalogue_p08_x83.jpg", "technic": "Acrylic on canvas", "year": "2020", "dimensions": "100 x 100 cm" },
     { "id": "painting-17", "image": "assets/paintings/IMG_1577 2.jpg", "technic": "Acrylic on canvas", "year": "2022", "dimensions": "93 x 72 cm" },
     { "id": "painting-24", "image": "assets/paintings/catalogue_p09_x87.jpg", "technic": "Acrylic on canvas", "year": "2022", "dimensions": "100 x 100 cm" },
-    { "id": "painting-13", "image": "assets/paintings/IMG_1210 2.jpg", "technic": "Acrylic on canvas", "year": "2015", "dimensions": "89 x 59 cm" },
+    { "id": "painting-13", "image": "assets/paintings/IMG_1210 2.jpg", "technic": "Acrylic on paper", "year": "2015", "dimensions": "89 x 59 cm" },
     { "id": "painting-21", "image": "assets/paintings/IMG_1584 2.jpg", "technic": "Acrylic on canvas", "year": "2019", "dimensions": "90 x 61 cm" },
     { "id": "painting-25", "image": "assets/paintings/catalogue_p10_x90.jpg", "technic": "Acrylic on canvas", "year": "2018", "dimensions": "140 x 120 cm" },
     { "id": "painting-11", "image": "assets/paintings/IMG_1198 2.jpg", "technic": "Acrylic on canvas", "year": "2010", "dimensions": "93 x 57 cm" },

@@ -312,8 +312,6 @@ function exhibitCard(item, index) {
       </div>
       <div class="exhibit-label">
         <span class="art-no">${t('no')} ${pad(index + 1)}</span>
-        <span class="exhibit-artist">Mohammed Amine Melehi</span>
-        <span class="exhibit-born">${esc(t('artistBorn'))}</span>
         <span class="exhibit-tech">${esc(I18n.data(item.technic || ''))}${item.year ? `, ${esc(item.year)}` : ''}</span>
         ${dims ? `<span class="exhibit-dims">${esc(dims)}</span>` : ''}
         ${views.length > 1 ? `<span class="exhibit-count">${esc(t('photos', views.length))}</span>` : ''}

@@ -468,7 +468,11 @@
     <span>Acrylic on canvas &amp; paper</span>
     <span>Select a work to view it in full</span>
   </div>
-  <div class="wrap art-grid" id="paintings-grid"></div>
+  <!-- Index of works (thumbnails) — jumps to a work on the wall -->
+  <nav class="wrap works-index" id="paintings-index" aria-label="Jump to a work"></nav>
+  <!-- The exhibition: one work per wall, rendered by script.js -->
+  <div class="wrap exhibition" id="paintings-grid"></div>
+  <div class="exhibit-counter" id="exhibit-counter" aria-hidden="true"></div>
   <a data-track="Paintings: Next to Ceramics" class="next-page" href="#ceramics" data-page="ceramics">
     <span class="eyebrow">Next collection</span>
     <span class="next-page-title">Ceramics <i>→</i></span>
@@ -837,6 +841,7 @@
   </button>
   <div class="lb-footer">
     <div id="lightbox-caption" class="lb-caption"></div>
+    <div id="lightbox-views" class="lb-views"></div>
     <div id="lightbox-counter" class="lb-counter"></div>
   </div>
 </div>

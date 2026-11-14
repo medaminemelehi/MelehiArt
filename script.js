@@ -4,7 +4,12 @@
 
 // Inlined gallery data (kept in sync with data.json so the site also works when opened as a static file)
 //
-// Painting: { id, image, technic, year, dimensions }   e.g. dimensions: "120 x 110 cm" (height x width)
+// Painting: { id, image, technic, year, dimensions, views? }   e.g. dimensions: "120 x 110 cm" (height x width)
+//           views (optional): more photos of the same work, shown as thumbnails under it, e.g.
+//             "views": [ { "image": "assets/paintings/IMG_1189 angle.jpg", "label": "Angle" },
+//                        { "image": "assets/paintings/IMG_1189 framed.jpg", "label": "Framed" } ]
+//           labels with a French translation: Angle, Side, Detail, Framed, In situ, Back
+//           (any other label is shown as written). The main "image" is always the first view.
 // Ceramic:  { id, image, year, dimensions }            e.g. dimensions: "41 x 39 x 12.5 cm"
 // Press:    { id, image, outlet, date, lang, title, titleEn?, author?, summary }
 //           date: "1999-03-20", "1999-03", "1994" or "" (undated); titleEn translates non-Latin titles;
@@ -274,6 +279,121 @@ function artCard(item, index, kind) {
     </figure>`;
 }
 
+/* ---------------- Paintings: exhibition layout ---------------- */
+// Every photo of a work: the main image first, then any extra views
+function viewsOf(item) {
+  return [{ image: item.image, label: 'Front' }, ...(item.views || [])];
+}
+
+// Real height (cm) → how much of the wall the work takes, so large canvases read as large
+function wallHeight(item) {
+  const h = parseFloat(String(item.dimensions || '').split(/x/i)[0]) || 90;
+  const k = Math.min(1, Math.max(0, (h - 50) / 90));   // 50 cm → 0, 140 cm → 1
+  return (54 + k * 24).toFixed(1);                     // 54vh – 78vh
+}
+
+function exhibitCard(item, index) {
+  const { main, dims } = captionLines(item);
+  const views = viewsOf(item);
+  const alt = `${t('paintingBy')} — ${main}`;
+  const thumbs = views.length > 1 ? `
+        <div class="exhibit-views" role="group" aria-label="${esc(t('otherViews'))}">
+          ${views.map((v, j) => `
+          <button class="exhibit-view${j ? '' : ' is-active'}" type="button" data-view="${j}" aria-pressed="${!j}" aria-label="${esc(I18n.data(v.label || ''))}">
+            <img src="${esc(webPath(v.image, 'thumb'))}" data-fallback="${esc(v.image)}" alt="" loading="lazy" decoding="async">
+          </button>`).join('')}
+        </div>` : '';
+  return `
+    <article class="exhibit reveal" id="wall-${esc(item.id)}" data-index="${index}" style="--wall-h:${wallHeight(item)}vh">
+      <div class="exhibit-art">
+        <button class="exhibit-frame" type="button" data-gallery="painting" data-index="${index}" data-view="0" aria-label="${esc(t('viewFull'))}: ${esc(alt)}">
+          <img src="${esc(webPath(item.image, 'large'))}" data-fallback="${esc(item.image)}" alt="${esc(alt)}" loading="lazy" decoding="async">
+        </button>${thumbs}
+      </div>
+      <div class="exhibit-label">
+        <span class="art-no">${t('no')} ${pad(index + 1)}</span>
+        <span class="exhibit-tech">${esc(I18n.data(item.technic || ''))}${item.year ? `, ${esc(item.year)}` : ''}</span>
+        ${dims ? `<span class="exhibit-dims">${esc(dims)}</span>` : ''}
+        ${views.length > 1 ? `<span class="exhibit-count">${esc(t('photos', views.length))}</span>` : ''}
+        <button class="link-arrow exhibit-open" type="button" data-gallery="painting" data-index="${index}" data-view="0">${esc(t('viewFull'))}</button>
+      </div>
+    </article>`;
+}
+
+function renderExhibition() {
+  const wall = document.getElementById('paintings-grid');
+  const rail = document.getElementById('paintings-index');
+  const items = siteData.paintings;
+  if (wall) wall.innerHTML = items.map(exhibitCard).join('');
+  if (rail) rail.innerHTML = items.map((item, i) => `
+    <a class="works-index-item" href="#wall-${esc(item.id)}" data-jump="wall-${esc(item.id)}" aria-label="${t('no')} ${pad(i + 1)}">
+      <img src="${esc(webPath(item.image, 'thumb'))}" data-fallback="${esc(item.image)}" alt="" loading="lazy" decoding="async">
+      <span>${pad(i + 1)}</span>
+    </a>`).join('');
+  watchExhibits();
+}
+
+// Small "No. 05 / 27" marker while walking through the exhibition
+let exhibitObserver = null;
+function watchExhibits() {
+  const counter = document.getElementById('exhibit-counter');
+  if (!counter || !('IntersectionObserver' in window)) return;
+  if (exhibitObserver) exhibitObserver.disconnect();
+  const total = pad(siteData.paintings.length);
+  exhibitObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const i = +e.target.dataset.index;
+      counter.innerHTML = `<b>${pad(i + 1)}</b> / ${total}`;
+      document.querySelectorAll('.works-index-item').forEach((a, j) => a.classList.toggle('is-current', j === i));
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  document.querySelectorAll('.exhibit').forEach(el => exhibitObserver.observe(el));
+  const wall = document.getElementById('paintings-grid');
+  const showCounter = new IntersectionObserver(([e]) => counter.classList.toggle('show', e.isIntersecting));
+  if (wall) showCounter.observe(wall);
+}
+
+// Thumbnails under a work swap the photo in place; the index jumps to a work
+document.addEventListener('click', e => {
+  const view = e.target.closest('.exhibit-view');
+  if (view) {
+    const exhibit = view.closest('.exhibit');
+    const item = siteData.paintings[+exhibit.dataset.index];
+    const v = viewsOf(item)[+view.dataset.view];
+    const frame = exhibit.querySelector('.exhibit-frame');
+    const img = frame.querySelector('img');
+    img.classList.add('swapping');
+    img.onload = () => img.classList.remove('swapping');
+    setImage(img, v.image, 'large');
+    frame.dataset.view = view.dataset.view;
+    exhibit.querySelector('.exhibit-open').dataset.view = view.dataset.view;
+    exhibit.querySelectorAll('.exhibit-view').forEach(b => {
+      const on = b === view;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on);
+    });
+    analytics.event('Painting view', { artwork: item.id, view: v.label || '' });
+    return;
+  }
+  const jump = e.target.closest('[data-jump]');
+  if (jump) {
+    e.preventDefault();
+    const target = document.getElementById(jump.dataset.jump);
+    if (!target) return;
+    // Fade the wall, step straight to the work, fade back in (a long smooth scroll over
+    // 27 large works is easily interrupted while photos load)
+    const wall = document.getElementById('paintings-grid');
+    target.querySelectorAll('img').forEach(img => { img.loading = 'eager'; });
+    target.classList.add('in');
+    wall.classList.add('is-jumping');
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: 'instant', block: 'center' });
+      setTimeout(() => wall.classList.remove('is-jumping'), 30);
+    }, 280);
+  }
+});
+
 function renderGallery(gridId, items, kind) {
   const grid = document.getElementById(gridId);
   if (!grid || !items) return;
@@ -342,20 +462,21 @@ document.addEventListener('error', e => {
 /* ---------------- Lightbox ---------------- */
 const lightbox = {
   el: null, img: null, caption: null, counter: null,
-  items: [], index: 0, lastFocus: null,
+  items: [], index: 0, view: 0, views: [], lastFocus: null,
 
   init() {
     this.el = document.getElementById('lightbox');
     this.img = document.getElementById('lightbox-img');
     this.caption = document.getElementById('lightbox-caption');
     this.counter = document.getElementById('lightbox-counter');
+    this.viewsBar = document.getElementById('lightbox-views');
 
     document.addEventListener('click', e => {
       const trigger = e.target.closest('[data-gallery]');
       if (trigger) {
         const kind = trigger.dataset.gallery;
         const items = { painting: siteData.paintings, ceramic: siteData.ceramics, press: siteData.press }[kind];
-        if (items) this.open(items, +trigger.dataset.index, trigger, kind);
+        if (items) this.open(items, +trigger.dataset.index, trigger, kind, +(trigger.dataset.view || 0));
       }
     });
 
@@ -363,6 +484,7 @@ const lightbox = {
       if (e.target.closest('.lb-close') || e.target === this.el || e.target.classList.contains('lb-stage')) this.close();
       else if (e.target.closest('.lb-prev')) this.step(-1);
       else if (e.target.closest('.lb-next')) this.step(1);
+      else if (e.target.closest('.lb-view')) this.show(this.index, +e.target.closest('.lb-view').dataset.view);
     });
 
     document.addEventListener('keydown', e => {
@@ -370,6 +492,11 @@ const lightbox = {
       if (e.key === 'Escape') this.close();
       else if (e.key === 'ArrowLeft') this.step(-1);
       else if (e.key === 'ArrowRight') this.step(1);
+      else if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && this.views.length > 1) {
+        e.preventDefault();
+        const n = this.views.length;
+        this.show(this.index, (this.view + (e.key === 'ArrowDown' ? 1 : -1) + n) % n);
+      }
     });
 
     // Swipe on touch devices
@@ -383,11 +510,11 @@ const lightbox = {
     });
   },
 
-  open(items, index, trigger, kind) {
+  open(items, index, trigger, kind, view = 0) {
     this.items = items;
     this.kind = kind;
     this.lastFocus = trigger;
-    this.show(index);
+    this.show(index, view);
     const item = items[index];
     if (kind === 'press') analytics.event('View press clipping', { clipping: `${item.outlet} (${item.date || 'undated'})` });
     else analytics.event('View artwork', {
@@ -411,12 +538,15 @@ const lightbox = {
     this.show((this.index + d + this.items.length) % this.items.length);
   },
 
-  show(index) {
+  show(index, view = 0) {
     this.index = index;
     const item = this.items[index];
+    this.views = this.kind === 'press' ? [{ image: item.image }] : viewsOf(item);
+    this.view = Math.min(view, this.views.length - 1);
+    const current = this.views[this.view];
     this.img.classList.remove('loaded');
     this.img.onload = () => this.img.classList.add('loaded');
-    setImage(this.img, item.image, 'large');
+    setImage(this.img, current.image, 'large');
     this.el.classList.toggle('is-press', this.kind === 'press');
     if (this.kind === 'press') {
       this.img.alt = `${item.outlet} — ${item.title}`;
@@ -426,6 +556,11 @@ const lightbox = {
       this.img.alt = main;
       this.caption.innerHTML = `<span class="art-no">${t('no')} ${pad(index + 1)}</span><span class="art-main">${esc(main)}</span>${dims ? `<span class="art-dims">${esc(dims)}</span>` : ''}`;
     }
+    this.viewsBar.innerHTML = this.views.length > 1 ? this.views.map((v, j) => `
+      <button class="lb-view${j === this.view ? ' is-active' : ''}" type="button" data-view="${j}" aria-pressed="${j === this.view}" aria-label="${esc(I18n.data(v.label || ''))}">
+        <img src="${esc(webPath(v.image, 'thumb'))}" alt="" decoding="async"><span>${esc(I18n.data(v.label || ''))}</span>
+      </button>`).join('') : '';
+    this.el.classList.toggle('has-views', this.views.length > 1);
     this.counter.textContent = `${pad(index + 1)} / ${pad(this.items.length)}`;
     // Preload the neighbours so stepping feels instant
     [1, -1].forEach(d => {
@@ -438,7 +573,7 @@ const lightbox = {
 /* ---------------- Boot ---------------- */
 // Everything script.js writes itself, in the current language
 function renderLocalized() {
-  renderGallery('paintings-grid', siteData.paintings, 'painting');
+  renderExhibition();
   renderGallery('ceramics-grid',  siteData.ceramics,  'ceramic');
   renderFeatured();
   renderPress();
@@ -468,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('langchange', () => {
     renderLocalized();
     revealOnScroll();
-    if (lightbox.el.classList.contains('open')) lightbox.show(lightbox.index);
+    if (lightbox.el.classList.contains('open')) lightbox.show(lightbox.index, lightbox.view);
     const btn = document.getElementById('cf-submit');
     if (btn && !btn.disabled) btn.innerHTML = `<span>${t('send')}</span>`;
     const status = document.getElementById('form-status');

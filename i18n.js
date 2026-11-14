@@ -120,6 +120,16 @@ const FR = {
   'Mohammed Amine Melehi shaping a ceramic piece in his studio in Asilah': 'Mohammed Amine Melehi façonnant une céramique dans son atelier à Asilah',
   'Acrylic on canvas': 'Acrylique sur toile',
   'Acrylic on paper': 'Acrylique sur papier',
+  // Painting photo labels (views)
+  'Front': 'Face',
+  'Angle': 'De biais',
+  'Side': 'Profil',
+  'Detail': 'Détail',
+  'Framed': 'Encadré',
+  'In situ': 'In situ',
+  'Back': 'Revers',
+  'Jump to a work': 'Aller à une œuvre',
+
   'Acrylic on canvas & paper': 'Acrylique sur toile & papier',
   'Select a work to view it in full': 'Sélectionnez une œuvre pour la voir en grand',
   'Next collection': 'Collection suivante',
@@ -268,6 +278,8 @@ const UI = {
     no: 'No.',
     view: 'View',
     viewFull: 'View full image',
+    otherViews: 'Other views of this work',
+    photos: n => `${n} photographs`,
     paintingBy: 'Painting by Mohammed Amine Melehi',
     ceramicBy: 'Ceramic by Mohammed Amine Melehi',
     formMissing: 'Please fill in your name and message.',
@@ -291,6 +303,8 @@ const UI = {
     no: 'N°',
     view: 'Voir',
     viewFull: 'Voir l’image en grand',
+    otherViews: 'Autres vues de cette œuvre',
+    photos: n => `${n} photographies`,
     paintingBy: 'Peinture de Mohammed Amine Melehi',
     ceramicBy: 'Céramique de Mohammed Amine Melehi',
     formMissing: 'Merci d’indiquer votre prénom et votre message.',
@@ -309,7 +323,7 @@ const I18n = (() => {
   const KEY = 'melehi-lang';
   const ATTRS = ['placeholder', 'aria-label', 'alt', 'title'];
   // Containers that script.js renders itself (translated through t())
-  const SKIP = '#paintings-grid, #ceramics-grid, #featured-works, #lightbox-caption, #lightbox-counter, #form-status, #paintings-count, #ceramics-count, #press-grid, #home-press, #press-count, #cf-submit, script, style, svg';
+  const SKIP = '#paintings-grid, #exhibit-counter, #lightbox-views, #ceramics-grid, #featured-works, #lightbox-caption, #lightbox-counter, #form-status, #paintings-count, #ceramics-count, #press-grid, #home-press, #press-count, #cf-submit, script, style, svg';
   const originalText = new WeakMap();
   let lang = 'en';
 

@@ -43,7 +43,7 @@
     {
       "id": "painting-9",
       "image": "assets/paintings/IMG_1191 2.jpg",
-      "technic": "Acrylic on canvas",
+      "technic": "Acrylic on paper",
       "year": "2012",
       "dimensions": "92 x 56 cm"
     },
@@ -113,7 +113,7 @@
     {
       "id": "painting-11",
       "image": "assets/paintings/IMG_1198 2.jpg",
-      "technic": "Acrylic on canvas",
+      "technic": "Acrylic on paper",
       "year": "2010",
       "dimensions": "93 x 57 cm"
     },
@@ -305,6 +305,30 @@
       "image": "assets/ceramics/cutout/IMG_2849.webp",
       "year": "1999",
       "dimensions": "14 x 20 x 30 cm"
+    },
+    {
+      "id": "ceramic-17",
+      "image": "assets/ceramics/cutout/ceramic-17.webp",
+      "year": "1995",
+      "dimensions": "29 x 21 x 11 cm"
+    },
+    {
+      "id": "ceramic-18",
+      "image": "assets/ceramics/cutout/ceramic-18.webp",
+      "year": "2013",
+      "dimensions": "24 x 19 x 19 cm"
+    },
+    {
+      "id": "ceramic-19",
+      "image": "assets/ceramics/cutout/ceramic-19.webp",
+      "year": "1999",
+      "dimensions": "31 x 13 x 11 cm"
+    },
+    {
+      "id": "ceramic-20",
+      "image": "assets/ceramics/cutout/ceramic-20.webp",
+      "year": "2010",
+      "dimensions": "46 x 23 x 14 cm"
     }
   ],
   "press": [

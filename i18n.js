@@ -194,6 +194,7 @@ const FR = {
   'May 2025': 'Mai 2025',
   'March 2024': 'Mars 2024',
   'March 2023': 'Mars 2023',
+  'February 2023': 'Février 2023',
   'Read article ↗': 'Lire l’article ↗',
   '(UAE) —': '(Émirats arabes unis) —',
   'Centre Hassan II des Rencontres Internationales — Cultural Moussems of':

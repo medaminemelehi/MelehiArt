@@ -27,7 +27,7 @@ const siteData = {
     { "id": "painting-20", "image": "assets/paintings/IMG_1583 2.jpg", "technic": "Acrylic on canvas", "year": "2019", "dimensions": "120 x 110 cm" },
     { "id": "painting-4", "image": "assets/paintings/IMG_1172 2.jpg", "technic": "Acrylic on canvas", "year": "2015", "dimensions": "120 x 110 cm" },
     { "id": "painting-8", "image": "assets/paintings/IMG_1189 2.jpg", "technic": "Acrylic on paper", "year": "2010", "dimensions": "93 x 56 cm" },
-    { "id": "painting-9", "image": "assets/paintings/IMG_1191 2.jpg", "technic": "Acrylic on canvas", "year": "2012", "dimensions": "92 x 56 cm" },
+    { "id": "painting-9", "image": "assets/paintings/IMG_1191 2.jpg", "technic": "Acrylic on paper", "year": "2012", "dimensions": "92 x 56 cm" },
     { "id": "painting-22", "image": "assets/paintings/catalogue_p06_x77.jpg", "technic": "Acrylic on canvas", "year": "2019", "dimensions": "140 x 120 cm" },
     { "id": "painting-1", "image": "assets/paintings/IMG_1034 2.jpg", "technic": "Acrylic on canvas", "year": "2016", "dimensions": "120 x 110 cm" },
     { "id": "painting-14", "image": "assets/paintings/IMG_1572 2.JPG", "technic": "Acrylic on canvas", "year": "2016", "dimensions": "136 x 81 cm" },
@@ -37,7 +37,7 @@ const siteData = {
     { "id": "painting-13", "image": "assets/paintings/IMG_1210 2.jpg", "technic": "Acrylic on paper", "year": "2015", "dimensions": "89 x 59 cm" },
     { "id": "painting-21", "image": "assets/paintings/IMG_1584 2.jpg", "technic": "Acrylic on canvas", "year": "2019", "dimensions": "90 x 61 cm" },
     { "id": "painting-25", "image": "assets/paintings/catalogue_p10_x90.jpg", "technic": "Acrylic on canvas", "year": "2018", "dimensions": "140 x 120 cm" },
-    { "id": "painting-11", "image": "assets/paintings/IMG_1198 2.jpg", "technic": "Acrylic on canvas", "year": "2010", "dimensions": "93 x 57 cm" },
+    { "id": "painting-11", "image": "assets/paintings/IMG_1198 2.jpg", "technic": "Acrylic on paper", "year": "2010", "dimensions": "93 x 57 cm" },
     { "id": "painting-26", "image": "assets/paintings/catalogue_p11_x94.jpg", "technic": "Acrylic on canvas", "year": "2018", "dimensions": "140 x 120 cm" },
     { "id": "painting-2", "image": "assets/paintings/IMG_1040 2.jpg", "technic": "Acrylic on canvas", "year": "2014", "dimensions": "120 x 110 cm" },
     { "id": "painting-5", "image": "assets/paintings/IMG_1173 2.jpg", "technic": "Acrylic on canvas", "year": "2012", "dimensions": "92 x 56 cm" },
@@ -68,7 +68,11 @@ const siteData = {
     { "id": "ceramic-4", "image": "assets/ceramics/cutout/IMG_2816.webp", "year": "1987", "dimensions": "54.5 x 33 x 9 cm" },
     { "id": "ceramic-15", "image": "assets/ceramics/cutout/catalogue_p20_x135.webp", "year": "1990", "dimensions": "23.3 x 24 x 15.5 cm" },
     { "id": "ceramic-16", "image": "assets/ceramics/cutout/catalogue_p20_x136.webp", "year": "1989", "dimensions": "24 x 27 x 26 cm" },
-    { "id": "ceramic-9", "image": "assets/ceramics/cutout/IMG_2849.webp", "year": "1999", "dimensions": "14 x 20 x 30 cm" }
+    { "id": "ceramic-9", "image": "assets/ceramics/cutout/IMG_2849.webp", "year": "1999", "dimensions": "14 x 20 x 30 cm" },
+    { "id": "ceramic-17", "image": "assets/ceramics/cutout/ceramic-17.webp", "year": "1995", "dimensions": "29 x 21 x 11 cm" },
+    { "id": "ceramic-18", "image": "assets/ceramics/cutout/ceramic-18.webp", "year": "2013", "dimensions": "24 x 19 x 19 cm" },
+    { "id": "ceramic-19", "image": "assets/ceramics/cutout/ceramic-19.webp", "year": "1999", "dimensions": "31 x 13 x 11 cm" },
+    { "id": "ceramic-20", "image": "assets/ceramics/cutout/ceramic-20.webp", "year": "2010", "dimensions": "46 x 23 x 14 cm" }
   ],
   "press": [
     {"id": "press-1", "image": "assets/press/1999-04-almaghrib-floraison.jpg", "outlet": "Al Maghrib", "date": "1999-04-29", "lang": "fr", "title": "Mohammed Amine Melehi — La floraison d’un artiste", "author": "Abdelouahad Zaâri", "summary": "A review of his spring exhibition of paintings and ceramics in Rabat: an eclectic language recalling Joan Miró, and jars, minarets and boxes coloured with cobalt, iron and chromate."},
